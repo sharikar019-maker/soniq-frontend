@@ -1,0 +1,3833 @@
+{
+  "products": [
+    {
+  "title": "PulseWave Plus",
+  "image": "/images/headphone2.jpg",
+  "price": 700,
+  "category": "wireless",
+  "noiseReduction": true,
+  "rating": 4.2,
+  "description": "PulseWave X is designed...",
+  "technicalSpecs": {
+    "driver": "40mm",
+    "frequency": "20Hz - 20kHz",
+    "impedance": "32 Ohm",
+    "bluetooth": "5.2",
+    "battery": "35 Hours"
+  },
+  "reviews": [
+    {
+      "name": "John Chen",
+      "rating": 5,
+      "comment": "Amazing sound quality."
+    }
+  ]
+},
+    {
+      "title": "AntiWave Plus",
+      "image": "/images/headphone3.jpg",
+     "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": " AntiWave Puls is designed for users who enjoy powerful bass...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": "John Thomas",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    },
+    {
+      "title": "Sony Plus",
+      "image": "/images/headphone4.jpg",
+      "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": "Sony Plus is designed for users who enjoy powerful bass...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": "Sara Chen",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    },
+    {
+      "title": "GameZone Pro",
+      "image": "/images/headphone5.jpg",
+      "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": "GameZone Pro is designed for users who enjoy powerful games...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": "Sara Thomas",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    },
+    {
+      "title": "Melody Pro",
+      "image": "/images/headphone6.jpg",
+      "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": "Melody Pro is designed for users who enjoy Melody Music...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": "Eva John ",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    },
+    {
+      "title": "AirBeat Plus",
+      "image": "/images/headphone7.jpg",
+      "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": "AirBeat Plus is designed for users who enjoy powerful bass...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": "Angel Chen",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    },
+    {
+      "title": "AuroHead Plus",
+      "image": "/images/headphone8.png",
+      "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": "AuroHead Plus is designed for users who enjoy powerful bass...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": "John Doe",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    },
+    {
+      "title": "FitZone plus",
+      "image": "/images/headphone9.jpg",
+      "price": 700,
+      "category": "wireless",
+      "noiseReduction": true,
+      "rating": 4.2,
+      "description": "FitZone Plus is designed for users who enjoy powerful bass...",
+      "technicalSpecs": {
+        "driver": "40mm",
+        "frequency": "20Hz - 20kHz",
+        "impedance": "32 Ohm",
+        "bluetooth": "5.2",
+        "battery": "35 Hours"
+      },
+      "reviews": [
+        {
+          
+          "name": " Joe John ",
+          "rating": 5,
+          "comment": "Amazing sound quality."
+        }
+      ]
+    }
+   ],
+
+  "users": [
+    {
+      "id": "a4c6",
+      "name": "Anu",
+      "email": "anu23@gmail.com",
+      "phone": "6512478964",
+      "password": "anu23login",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-01-12T09:30:00Z"
+    },
+    {
+      "id": "6a19",
+      "name": "Rini Thomas",
+      "email": "rinithomas@123",
+      "phone": "8745129637",
+      "password": "rini123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-01-12T09:30:00Z"
+    },
+    {
+      "id": "d218",
+      "name": "Alex James",
+      "email": "alexjames123@gmail.com",
+      "phone": "9078451254",
+      "password": "alex123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-02-12T09:30:00Z"
+    },
+    {
+      "id": "5021",
+      "name": "Angel Thomas",
+      "email": "angelthomas123@gmail.com",
+      "phone": "9587413678",
+      "password": "angel123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-02-12T09:30:00Z"
+    },
+    {
+      "id": "2988",
+      "name": "Rohan Raj",
+      "email": "rohanraj123@gmail.com",
+      "phone": "9452678912",
+      "password": "rohan123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-01-12T09:30:00Z"
+    },
+    {
+      "id": "2c62",
+      "name": "Ethan Patel",
+      "email": "ethanpatel123@gmail.com",
+      "phone": "9785412635",
+      "password": "ethan123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-01-12T09:30:00Z"
+    },
+    {
+      "id": "019b",
+      "name": "Ava Alex",
+      "email": "avaalex123@gmail.com",
+      "phone": "9578456315",
+      "password": "ava123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-02-12T09:30:00Z"
+    },
+    {
+      "id": "b487",
+      "name": "Sophia Wilson",
+      "email": "sophiawilson123@gmail.com",
+      "phone": "9655789455",
+      "password": "sophia123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-01-12T09:30:00Z"
+    },
+    {
+      "id": "aa09",
+      "name": "Oliver Davis",
+      "email": "oliverdavis123@gmail.com",
+      "phone": "9854789645",
+      "password": "oliver123",
+      "role": "customer",
+      "status": "active",
+      "createdAt": "2026-02-12T09:30:00Z"
+    },
+    {
+      "id": "25d3",
+      "name": "",
+      "email": "test124@gmail.com",
+      "phone": "9845781257",
+      "password": "test45",
+      "status": "active"
+    },
+    {
+      "id": "3379",
+      "name": "",
+      "email": "some@gmail.com",
+      "phone": "8431254544",
+      "password": "565656449",
+      "status": "active"
+    },
+    {
+      "id": "3fd5",
+      "name": "Rekha",
+      "email": "rekha123@gmail.com",
+      "phone": "8247962248",
+      "password": "rekha123",
+      "status": "active"
+    },
+    {
+      "id": "5f4e",
+      "name": "sharika R",
+      "email": "sharikar019@gmail.com",
+      "phone": "7012493499",
+      "password": "sharika017"
+    },
+    {
+      "id": "cc27",
+      "name": "Eva",
+      "email": "eva@gmail.com",
+      "phone": "9567892655",
+      "password": "eva123"
+    },
+    {
+      "id": "fffb",
+      "name": "Amal",
+      "email": "amal123@gmail.com",
+      "phone": "9567894411",
+      "password": "amal123"
+    },
+    {
+      "id": "d880",
+      "name": "sharika R",
+      "email": "sharikar0@gmail.com",
+      "phone": "7012493499",
+      "password": "sharika123"
+    },
+    {
+      "id": "34c6",
+      "name": "Rohan",
+      "email": "rohan123@gmail.com",
+      "phone": "7012498855",
+      "password": "rohan123"
+    },
+    {
+      "id": "6256",
+      "name": "Mufeeda",
+      "email": "mufeeda123@gmail.com",
+      "phone": "7012493477",
+      "password": "muffi123"
+    },
+    {
+      "id": "fc8c",
+      "name": "shiba",
+      "email": "shiba123@gmail.com",
+      "phone": "9567895466",
+      "password": "shiba123"
+    }
+  ],
+  "addresses": [],
+  "orders": [
+    {
+      "id": "6933",
+      "userEmail": "anu23@gmail.com",
+      "items": [
+        {
+          "id": "1",
+          "image": "/images/headphones.jpg",
+          "title": "EchoBeat Pro",
+          "price": 800,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.5,
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "30 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "Michael Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-02-03T05:21:32.149Z",
+      "status": "Placed"
+    },
+    {
+      "id": "8652",
+      "userEmail": "anu23@gmail.com",
+      "items": [
+        {
+          "id": "1",
+          "image": "/images/headphones.jpg",
+          "title": "EchoBeat Pro",
+          "price": 800,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.5,
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "30 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "Michael Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1600,
+      "createdAt": "2026-01-03T05:21:47.226Z",
+      "status": "Shipped"
+    },
+    {
+      "id": "d107",
+      "userEmail": "anu23@gmail.com",
+      "items": [
+        {
+          "id": "1",
+          "image": "/images/headphones.jpg",
+          "title": "EchoBeat Pro",
+          "price": 800,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.5,
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "30 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "Michael Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-01-03T05:25:55.351Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "bcab",
+      "userEmail": "anu23@gmail.com",
+      "items": [
+        {
+          "id": "1",
+          "image": "/images/headphones.jpg",
+          "title": "EchoBeat Pro",
+          "price": 800,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.5,
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "30 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "Michael Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-01-03T06:03:09.062Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "24b2",
+      "userEmail": "anu23@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-03T06:08:34.637Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "9af7",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-04T16:50:31.138Z",
+      "status": "Placed"
+    },
+    {
+      "id": "42fa",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1500,
+      "createdAt": "2026-02-04T16:52:28.757Z",
+      "status": "Placed"
+    },
+    {
+      "id": "ee2b",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1500,
+      "createdAt": "2026-02-04T16:52:37.884Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "05ae",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1500,
+      "createdAt": "2026-02-04T17:02:31.896Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "06d9",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-01-04T17:04:53.473Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "e2ec",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-01-04T17:05:23.886Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "c1fb",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-01-04T17:07:39.468Z",
+      "status": "Shipped"
+    },
+    {
+      "id": "14ec",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-02-05T04:36:36.933Z",
+      "status": "Shipped"
+    },
+    {
+      "id": "7e5e",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-01-05T04:37:28.973Z",
+      "status": "Shipped"
+    },
+    {
+      "id": "a144",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "title": "EchoBeat Pro",
+          "image": "/images/headphones.jpg",
+          "description": "EchoBeat Pro delivers clear sound with deep bass and balanced mids...",
+          "price": 800,
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.5",
+            "battery": "30 Hours"
+          },
+          "id": "1",
+          "amount": 1
+        }
+      ],
+      "totalAmount": 800,
+      "createdAt": "2026-02-05T04:38:00.303Z",
+      "status": "Shipped"
+    },
+    {
+      "id": "9d1b",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-05T04:42:55.645Z",
+      "status": "Placed"
+    },
+    {
+      "id": "5131",
+      "userEmail": "alexjames123@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-01-05T04:44:36.072Z",
+      "status": "Placed"
+    },
+    {
+      "id": "8925",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "5",
+          "image": "/images/headphone5.jpg",
+          "title": "GameZone Pro",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-01-05T04:47:22.276Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "5cf8",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "7",
+          "image": "/images/headphone7.jpg",
+          "title": "AirBeat Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-05T04:47:38.976Z",
+      "status": "Placed"
+    },
+    {
+      "id": "b543",
+      "userEmail": "rohanraj123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-05T04:50:12.933Z",
+      "status": "Placed"
+    },
+    {
+      "id": "8b3e",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-01-05T04:54:18.523Z",
+      "status": "Placed"
+    },
+    {
+      "id": "4529",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-01-05T04:54:27.089Z",
+      "status": "Delivered"
+    },
+    {
+      "id": "19f6",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "5",
+          "image": "/images/headphone5.jpg",
+          "title": "GameZone Pro",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-01-05T04:54:41.626Z",
+      "status": "Placed"
+    },
+    {
+      "id": "5998",
+      "userEmail": "avaalex123@gmail.com",
+      "items": [
+        {
+          "id": "6",
+          "image": "/images/headphone6.jpg",
+          "title": "Melody Pro",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-05T04:56:06.256Z",
+      "status": "Placed"
+    },
+    {
+      "id": "69fd",
+      "userEmail": "avaalex123@gmail.com",
+      "items": [
+        {
+          "id": "8",
+          "image": "/images/headphone8.png",
+          "title": "AuroHead Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-05T04:56:28.903Z",
+      "status": "Placed"
+    },
+    {
+      "id": "35a8",
+      "userEmail": "sophiawilson123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-05T04:59:56.500Z",
+      "status": "Placed"
+    },
+    {
+      "id": "6aef",
+      "userEmail": "oliverdavis123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 3
+        }
+      ],
+      "totalAmount": 2100,
+      "createdAt": "2026-02-05T05:01:34.770Z",
+      "status": "Placed"
+    },
+    {
+      "id": "b897",
+      "userEmail": "test124@gmail.com",
+      "items": [
+        {
+          "id": "1",
+          "image": "/images/headphones.jpg",
+          "title": "EchoBeat Pro",
+          "price": 800,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 4
+        }
+      ],
+      "totalAmount": 3200,
+      "createdAt": "2026-02-09T07:18:08.926Z",
+      "status": "Placed"
+    },
+    {
+      "id": "ca5b",
+      "userEmail": "rinithomas@123",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-09T10:51:37.640Z",
+      "status": "Shipped"
+    },
+    {
+      "id": "1e34",
+      "userEmail": "oliverdavis123@gmail.com",
+      "items": [
+        {
+          "id": "6",
+          "image": "/images/headphone6.jpg",
+          "title": "Melody Pro",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-09T10:57:47.460Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "0819",
+      "userEmail": "oliverdavis123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-09T11:04:02.442Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "23af",
+      "userEmail": "sharikar019@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-12T04:47:08.747Z",
+      "status": "Placed"
+    },
+    {
+      "id": "879a",
+      "userEmail": "sharikar019@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-12T04:47:48.852Z",
+      "status": "Placed"
+    },
+    {
+      "id": "51de",
+      "userEmail": "anu23@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-17T10:02:54.890Z",
+      "status": "Placed"
+    },
+    {
+      "id": "a6d3",
+      "userEmail": "eva@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-17T13:29:00.264Z",
+      "status": "Placed"
+    },
+    {
+      "id": "bbc5",
+      "userEmail": "eva@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-17T13:30:45.887Z",
+      "status": "Placed"
+    },
+    {
+      "id": "062e",
+      "userEmail": "eva@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-17T13:33:15.099Z",
+      "status": "Placed"
+    },
+    {
+      "id": "d7fc",
+      "userEmail": "eva@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 3
+        }
+      ],
+      "totalAmount": 2100,
+      "createdAt": "2026-02-17T14:27:06.037Z",
+      "status": "Placed"
+    },
+    {
+      "id": "e599",
+      "userEmail": "eva@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 3
+        }
+      ],
+      "totalAmount": 2100,
+      "createdAt": "2026-02-17T14:29:12.810Z",
+      "status": "Placed"
+    },
+    {
+      "id": "cfc5",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 3
+        }
+      ],
+      "totalAmount": 2100,
+      "createdAt": "2026-02-17T14:30:05.317Z",
+      "status": "Placed"
+    },
+    {
+      "id": "2247",
+      "userEmail": "amal123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T03:37:11.420Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "d959",
+      "userEmail": "amal123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T03:38:07.194Z",
+      "status": "Cancelled"
+    },
+    {
+      "id": "0a1a",
+      "userEmail": "amal123@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T05:51:38.083Z",
+      "status": "Placed"
+    },
+    {
+      "id": "a9fe",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T05:53:45.925Z",
+      "status": "Placed"
+    },
+    {
+      "id": "9416",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T05:53:54.850Z",
+      "status": "Placed"
+    },
+    {
+      "id": "bcf2",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-18T05:54:14.272Z",
+      "status": "Placed"
+    },
+    {
+      "id": "dd3c",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-18T05:54:40.962Z",
+      "status": "Placed"
+    },
+    {
+      "id": "1b95",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T06:00:08.152Z",
+      "status": "Placed"
+    },
+    {
+      "id": "5698",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T06:54:39.776Z",
+      "status": "Placed"
+    },
+    {
+      "id": "bc21",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T06:55:40.746Z",
+      "status": "Placed"
+    },
+    {
+      "id": "2a6f",
+      "userEmail": "sharikar0@gmail.com",
+      "items": [
+        {
+          "id": "6",
+          "image": "/images/headphone6.jpg",
+          "title": "Melody Pro",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T08:40:05.628Z",
+      "status": "Placed"
+    },
+    {
+      "id": "b6a3",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "9",
+          "image": "/images/headphone9.jpg",
+          "title": "FitZone plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T08:41:52.766Z",
+      "status": "Placed"
+    },
+    {
+      "id": "216e",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "9",
+          "image": "/images/headphone9.jpg",
+          "title": "FitZone plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T08:42:17.921Z",
+      "status": "Placed"
+    },
+    {
+      "id": "45dc",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "8",
+          "image": "/images/headphone8.png",
+          "title": "AuroHead Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "date": "2026-02-18T08:44:45.377Z",
+      "status": "Placed"
+    },
+    {
+      "id": "698c",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "7",
+          "image": "/images/headphone7.jpg",
+          "title": "AirBeat Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-18T09:16:23.279Z",
+      "status": "Placed"
+    },
+    {
+      "id": "a443",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T09:17:16.072Z",
+      "status": "Placed"
+    },
+    {
+      "id": "7589",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "subtotal": 700,
+      "discount": 200,
+      "totalAmount": 500,
+      "createdAt": "2026-02-18T09:51:52.032Z",
+      "status": "Placed"
+    },
+    {
+      "id": "96d4",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "subtotal": 700,
+      "discount": 0,
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T09:54:38.491Z",
+      "status": "Placed"
+    },
+    {
+      "id": "444d",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "createdAt": "2026-02-18T09:55:58.096Z",
+      "status": "Placed"
+    },
+    {
+      "id": "005f",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 2
+        }
+      ],
+      "totalAmount": 1400,
+      "createdAt": "2026-02-18T10:09:17.357Z",
+      "status": "Placed"
+    },
+    {
+      "id": "2bab",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "createdAt": "2026-02-18T10:17:06.112Z",
+      "status": "Placed"
+    },
+    {
+      "id": "3048",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "createdAt": "2026-02-18T10:17:54.690Z",
+      "status": "Placed"
+    },
+    {
+      "id": "964d",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "9",
+          "image": "/images/headphone9.jpg",
+          "title": "FitZone plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "createdAt": "2026-02-18T10:25:36.965Z",
+      "status": "Placed"
+    },
+    {
+      "id": "daa0",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1200,
+      "discountApplied": 200,
+      "createdAt": "2026-02-18T10:32:58.121Z",
+      "status": "Placed"
+    },
+    {
+      "id": "e063",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "createdAt": "2026-02-19T04:42:06.382Z",
+      "status": "Placed"
+    },
+    {
+      "id": "57cc",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:55:12.315Z"
+    },
+    {
+      "id": "3688",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:55:16.656Z"
+    },
+    {
+      "id": "fb1b",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:55:20.476Z"
+    },
+    {
+      "id": "e709",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 1400,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:55:24.474Z"
+    },
+    {
+      "id": "bb60",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:55:36.472Z"
+    },
+    {
+      "id": "150e",
+      "userEmail": "testerf12@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:59:00.716Z"
+    },
+    {
+      "id": "8aa0",
+      "userEmail": "testerf12@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "discountApplied": 0,
+      "status": "Placed",
+      "createdAt": "2026-02-19T04:59:50.613Z"
+    },
+    {
+      "id": "adb7",
+      "userEmail": "testerf12@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "status": "Placed",
+      "createdAt": "2026-02-19T05:00:05.703Z"
+    },
+    {
+      "id": "cb1e",
+      "userEmail": "testerf12@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "status": "Placed",
+      "createdAt": "2026-02-19T05:00:06.493Z"
+    },
+    {
+      "id": "a0b4",
+      "userEmail": "angelthomas123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "discountApplied": 0,
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T05:11:39.694Z",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771404128372,
+        "label": "tc 56/890",
+        "address": "cgvgcdeswsjnyhh po  hgtffrhn"
+      }
+    },
+    {
+      "id": "dc4f",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "8",
+          "image": "/images/headphone8.png",
+          "title": "AuroHead Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "status": "Placed",
+      "createdAt": "2026-02-19T05:14:48.794Z"
+    },
+    {
+      "id": "8054",
+      "userEmail": "ethanpatel123@gmail.com",
+      "items": [
+        {
+          "id": "8",
+          "image": "/images/headphone8.png",
+          "title": "AuroHead Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T05:21:30.640Z",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771404277694,
+        "label": "vghvgvbg",
+        "address": "vvgccvrttxexedxfvg"
+      }
+    },
+    {
+      "id": "fcdd",
+      "userEmail": "rohan123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "status": "Placed",
+      "createdAt": "2026-02-19T05:25:40.393Z"
+    },
+    {
+      "id": "cd51",
+      "userEmail": "rohan123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T05:26:25.244Z",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771478778355,
+        "label": "TC55/46",
+        "address": "someone,s villa ethidjvhd thekadth tharavad nemon PO tvm"
+      }
+    },
+    {
+      "id": "c970",
+      "userEmail": "rohan123@gmail.com",
+      "items": [
+        {
+          "id": "4",
+          "image": "/images/headphone4.jpg",
+          "title": "Sony Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "originalAmount": 700,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771478778355,
+        "label": "TC55/46",
+        "address": "someone,s villa ethidjvhd thekadth tharavad nemon PO tvm"
+      },
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T06:30:41.843Z"
+    },
+    {
+      "id": "bcc8",
+      "userEmail": "rohan123@gmail.com",
+      "items": [
+        {
+          "id": "6",
+          "image": "/images/headphone6.jpg",
+          "title": "Melody Pro",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "originalAmount": 700,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771478778355,
+        "label": "TC55/46",
+        "address": "someone,s villa ethidjvhd thekadth tharavad nemon PO tvm"
+      },
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T06:42:07.118Z"
+    },
+    {
+      "id": "946d",
+      "userEmail": "rohan123@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "originalAmount": 700,
+      "discountApplied": 0,
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771478778355,
+        "label": "TC55/46",
+        "address": "someone,s villa ethidjvhd thekadth tharavad nemon PO tvm"
+      },
+      "status": "Shipped",
+      "createdAt": "2026-02-19T06:42:42.637Z"
+    },
+    {
+      "id": "e14f",
+      "userEmail": "mufeeda123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "originalAmount": 700,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771484363028,
+        "label": "TC55/48",
+        "address": "vbdhbcysgggasshdbhybcs malapurambu yndj PO"
+      },
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T06:59:39.014Z"
+    },
+    {
+      "id": "a0c5",
+      "userEmail": "mufeeda123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "originalAmount": 700,
+      "discountApplied": 0,
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771484363028,
+        "label": "TC55/48",
+        "address": "vbdhbcysgggasshdbhybcs malapurambu yndj PO"
+      },
+      "status": "Cancelled",
+      "createdAt": "2026-02-19T07:00:10.823Z"
+    },
+    {
+      "id": "ddf6",
+      "userEmail": "mufeeda123@gmail.com",
+      "items": [
+        {
+          "id": "8",
+          "image": "/images/headphone8.png",
+          "title": "AuroHead Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "originalAmount": 700,
+      "discountApplied": 0,
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771484363028,
+        "label": "TC55/48",
+        "address": "vbdhbcysgggasshdbhybcs malapurambu yndj PO"
+      },
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T07:12:34.227Z"
+    },
+    {
+      "id": "d545",
+      "userEmail": "mufeeda123@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "originalAmount": 700,
+      "discountApplied": 0,
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1771485451088,
+        "label": "TC55/48",
+        "address": "vgtvbhbyuhftycrtfgvvgtrd"
+      },
+      "status": "Confirmed",
+      "createdAt": "2026-02-19T07:17:45.286Z"
+    },
+    {
+      "id": "44ce",
+      "userEmail": "shiba123@gmail.com",
+      "items": [
+        {
+          "id": "3",
+          "image": "/images/headphone3.jpg",
+          "title": "AntiWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 500,
+      "originalAmount": 700,
+      "discountApplied": 200,
+      "couponCode": "SAVE200",
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1772607120528,
+        "label": "TC56/789",
+        "address": "ihfhduigfndnfudsgfudsnfdjbbfysgydbs"
+      },
+      "status": "Delivered",
+      "createdAt": "2026-03-04T06:52:14.167Z"
+    },
+    {
+      "id": "077b",
+      "userEmail": "shiba123@gmail.com",
+      "items": [
+        {
+          "id": "8",
+          "image": "/images/headphone8.png",
+          "title": "AuroHead Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "originalAmount": 700,
+      "discountApplied": 0,
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1772607120528,
+        "label": "TC56/789",
+        "address": "ihfhduigfndnfudsgfudsnfdjbbfysgydbs"
+      },
+      "status": "Shipped",
+      "createdAt": "2026-03-05T05:19:34.637Z"
+    },
+    {
+      "id": "1130",
+      "userEmail": "shiba123@gmail.com",
+      "items": [
+        {
+          "id": "2",
+          "image": "/images/headphone2.jpg",
+          "title": "PulseWave Plus",
+          "price": 700,
+          "category": "wireless",
+          "noiseReduction": true,
+          "rating": 4.2,
+          "description": "PulseWave X is designed for users who enjoy powerful bass...",
+          "specs": {
+            "driver": "40mm",
+            "frequency": "20Hz - 20kHz",
+            "impedance": "32 Ohm",
+            "bluetooth": "5.2",
+            "battery": "35 Hours"
+          },
+          "reviews": [
+            {
+              "id": 1,
+              "name": "John Chen",
+              "rating": 5,
+              "comment": "Amazing sound quality."
+            }
+          ],
+          "amount": 1
+        }
+      ],
+      "totalAmount": 700,
+      "originalAmount": 700,
+      "discountApplied": 0,
+      "paymentMethod": "UPI",
+      "deliveryAddress": {
+        "id": 1772607120528,
+        "label": "TC56/789",
+        "address": "ihfhduigfndnfudsgfudsnfdjbbfysgydbs"
+      },
+      "status": "Placed",
+      "createdAt": "2026-03-05T15:46:56.293Z"
+    }
+  ],
+  "admins": [
+    {
+      "id": "admin_001",
+      "name": "Super Admin",
+      "email": "admin019@gmail.com",
+      "password": "Admin@123",
+      "status": "active",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}
