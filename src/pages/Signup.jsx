@@ -1,13 +1,10 @@
 import { useState, useContext } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 const Signup = () => {
   const { signup } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const from = location.state?.from || "/";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -20,70 +17,56 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-const handleSignup = async (e) => {
-  e.preventDefault();
-  setError("");
-
-  const cleanedData = {
-    name: formData.name.trim(),
-    email: formData.email.trim(),
-    phone: formData.phone.trim(),
-    password: formData.password.trim(),
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //  Name validation 
-  if (!cleanedData.name) {
-    setError("Name is required");
-    return;
-  }
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setError("");
 
-  //  Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!cleanedData.email || !emailRegex.test(cleanedData.email)) {
-    setError("Please enter a valid email address");
-    return;
-  }
+    const cleanedData = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      password: formData.password.trim(),
+    };
 
-  //  Phone validation 
-  const phoneRegex = /^[0-9]{10}$/;
-  if (!phoneRegex.test(cleanedData.phone)) {
-    setError("Phone number must be exactly 10 digits");
-    return;
-  }
+    if (!cleanedData.name) {
+      setError("Name is required");
+      return;
+    }
 
-  // Password validation 
-  if (!cleanedData.password || cleanedData.password.length < 6) {
-    setError("Password must be at least 6 characters");
-    return;
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(cleanedData.email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
 
-  setLoading(true);
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(cleanedData.phone)) {
+      setError("Phone number must be exactly 10 digits");
+      return;
+    }
 
-  try {
+    if (cleanedData.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    setLoading(true);
     const result = await signup(cleanedData);
+    setLoading(false);
 
     if (result.success) {
-      navigate(from, { replace: true });
+      navigate("/");
     } else {
       if (result.error === "EMAIL_EXISTS") {
-        setError("Email already exists. Please login.");
+        setError("Email already registered. Please login.");
       } else {
-        setError("Server error. Please try again later.");
+        setError(result.error || "Something went wrong. Please try again.");
       }
     }
-  } catch (err) {
-    setError("Something went wrong. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
-
-
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">

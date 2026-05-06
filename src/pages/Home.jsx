@@ -17,7 +17,7 @@ const Home = () => {
       
       <Hero />
 
-      <section className="max-w-[1200px] mx-auto px-4 mt-16">
+      <section className="max w[1200px] mx-auto px-4 mt-16">
         <h2 className="text-3xl font-bold text-center mb-2">
           Latest Models
         </h2>
@@ -28,7 +28,7 @@ const Home = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {latestProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       </section>

@@ -1,29 +1,27 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../Context/shopContext";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
-
-const BASE_URL = "http://localhost:5000/orders";
+import {
+  placeOrderApi,
+  createRazorpayOrder,
+  verifyPayment,
+  getRazorpayKey,
+} from "../api/productService";
 
 const Payment = () => {
-  const {
-    checkoutItems,
-    clearCart,
-    finalTotal,
-    discount,
-    total,
-  } = useContext(ShopContext);
-
+  const { checkoutItems, clearCart, finalTotal, discount, total } =
+    useContext(ShopContext);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [method, setMethod] = useState("");
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [addresses, setAddresses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
+  // ─── Load saved addresses from localStorage ───────────────────────
   useEffect(() => {
     if (!user) {
       navigate("/login");
@@ -31,146 +29,230 @@ const Payment = () => {
     }
 
     const key = `addresses_${user.email}`;
-    const savedAddresses = JSON.parse(localStorage.getItem(key)) || [];
+    const saved = JSON.parse(localStorage.getItem(key)) || [];
 
-    if (savedAddresses.length === 0) {
+    if (saved.length === 0) {
       toast.warning("Please add an address before checkout");
       navigate("/add-address");
       return;
     }
 
-    setAddresses(savedAddresses);
-    setSelectedAddress(savedAddresses[0]);
+    setAddresses(saved);
+    setSelectedAddress(saved[0]);
   }, [user, navigate]);
+
+  // ─── Format address for backend ───────────────────────────────────
+  // your localStorage address has: { label, address (full string) }
+  // backend needs: { street, city, state, postalCode, country }
+  const formatAddress = (addr) => {
+    // if already has backend format fields, use them
+    if (addr.street) return addr;
+
+    // otherwise split the address string into parts
+    const parts = addr.address?.split(",").map((p) => p.trim()) || [];
+    return {
+      street: parts[0] || addr.address || "N/A",
+      city: parts[1] || "N/A",
+      state: parts[2] || "N/A",
+      postalCode: parts[3] || "000000",
+      country: parts[4] || "India",
+    };
+  };
 
   if (!checkoutItems || checkoutItems.length === 0) {
     return (
       <div className="text-center mt-20">
-        <h2 className="text-2xl font-semibold">
-          No items to checkout
-        </h2>
+        <h2 className="text-2xl font-semibold">No items to checkout</h2>
+        <button
+          onClick={() => navigate("/shop")}
+          className="mt-4 bg-black text-white px-5 py-2 rounded"
+        >
+          Go Shopping
+        </button>
       </div>
     );
   }
 
-  const handlePayment = async () => {
-    if (!method) {
-      toast.warning("Please select payment method");
-      return;
-    }
-
-    if (!selectedAddress) {
-      toast.warning("Please select delivery address");
-      return;
-    }
-
+  // ─── COD Handler ─────────────────────────────────────────────────
+  const handleCOD = async () => {
     try {
-      const order = {
-        userEmail: user.email,
-        items: checkoutItems,
-        totalAmount: finalTotal,
-        originalAmount: total,
-        discountApplied: discount,
-        paymentMethod: method.toUpperCase(),
-        deliveryAddress: selectedAddress,
-        status: "Placed",
+      setLoading(true);
+      await placeOrderApi({
+        shippingAddress: formatAddress(selectedAddress),
+        paymentMethod: "COD",
+      });
 
-        // IMPORTANT
-        createdAt: new Date().toISOString(),
+      await clearCart();
+      toast.success("Order placed successfully!");
+      navigate("/profile");
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Order failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ─── Razorpay Handler (Card / UPI) ────────────────────────────────
+  const handleRazorpay = async () => {
+    try {
+      setLoading(true);
+
+      // 1. Get Razorpay key
+      const keyId = await getRazorpayKey();
+
+      // 2. Create Razorpay order from backend
+      const razorpayOrder = await createRazorpayOrder(finalTotal);
+
+      // 3. Open Razorpay popup
+      const options = {
+        key: keyId,
+        amount: razorpayOrder.amount,
+        currency: razorpayOrder.currency,
+        order_id: razorpayOrder.razorpayOrderId,
+        name: "HeadPhone Store",
+        description: "Order Payment",
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: user.phone || "",
+        },
+        theme: { color: "#2563eb" },
+
+        handler: async (response) => {
+          try {
+            // 4. Verify payment + create order in backend
+            await verifyPayment({
+              razorpayOrderId: response.razorpay_order_id,
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpaySignature: response.razorpay_signature,
+              shippingAddress: formatAddress(selectedAddress),
+            });
+
+            await clearCart();
+            toast.success("Payment successful! Order placed.");
+            navigate("/profile");
+          } catch (err) {
+            toast.error("Payment verification failed");
+          }
+        },
+
+        modal: {
+          ondismiss: () => {
+            setLoading(false);
+            toast.warning("Payment cancelled");
+          },
+        },
       };
 
-      await axios.post(BASE_URL, order);
-
-      clearCart();
-
-      toast.success("Order placed successfully");
-
-      navigate("/profile");
-
+      const rzp = new window.Razorpay(options);
+      rzp.open();
     } catch (err) {
-      toast.error("Payment failed");
+      toast.error(err.response?.data?.message || "Payment failed");
+      setLoading(false);
+    }
+  };
+
+  // ─── Main Handler ─────────────────────────────────────────────────
+  const handlePayment = () => {
+    if (!method) {
+      toast.warning("Please select a payment method");
+      return;
+    }
+    if (!selectedAddress) {
+      toast.warning("Please select a delivery address");
+      return;
+    }
+
+    if (method === "cod") {
+      handleCOD();
+    } else {
+      // card or upi — both go through Razorpay
+      handleRazorpay();
     }
   };
 
   return (
     <div className="max-w-xl mx-auto mt-20 p-6 bg-white shadow rounded">
+      <h2 className="text-2xl font-bold mb-6">Checkout</h2>
 
-      <h2 className="text-2xl font-bold mb-4">Payment</h2>
-
-      {/* ADDRESS */}
+      {/* ─── Address ──────────────────────────────────────────── */}
       <div className="mb-6">
-        <h3 className="font-semibold mb-2">Select Address</h3>
-
+        <h3 className="font-semibold mb-2">Delivery Address</h3>
         {addresses.map((addr) => (
           <label
             key={addr.id}
-            className="flex items-start gap-2 mb-2 border p-2 rounded"
+            className="flex items-start gap-2 mb-2 border p-3 rounded cursor-pointer"
           >
             <input
               type="radio"
               name="address"
               checked={selectedAddress?.id === addr.id}
               onChange={() => setSelectedAddress(addr)}
+              className="mt-1"
             />
-
             <div>
               <p className="font-medium">{addr.label}</p>
               <p className="text-sm text-gray-600">{addr.address}</p>
             </div>
-
           </label>
         ))}
       </div>
 
-      {/* ORDER SUMMARY */}
-      <div className="mb-4">
-
+      {/* ─── Order Summary ────────────────────────────────────── */}
+      <div className="mb-6 bg-gray-50 p-4 rounded">
+        <h3 className="font-semibold mb-3">Order Summary</h3>
         {checkoutItems.map((item) => (
-          <div key={item.id} className="flex justify-between mb-2">
-            <span>{item.title} × {item.amount}</span>
-            <span>₹{item.price * item.amount}</span>
+          <div
+            key={item.product._id}
+            className="flex justify-between mb-2 text-sm"
+          >
+            <span>
+              {item.product.title} × {item.quantity}
+            </span>
+            <span>₹{item.product.price * item.quantity}</span>
           </div>
         ))}
-
         <hr className="my-3" />
-
-        <p>Subtotal: ₹{total}</p>
-        <p>Discount: -₹{discount}</p>
-
-        <p className="font-bold text-lg">
-          Final Total: ₹{finalTotal}
-        </p>
-
+        <p className="text-sm">Subtotal: ₹{total}</p>
+        {discount > 0 && (
+          <p className="text-sm text-green-600">Discount: −₹{discount}</p>
+        )}
+        <p className="font-bold text-lg mt-1">Final Total: ₹{finalTotal}</p>
       </div>
 
-      {/* PAYMENT */}
-      <div className="space-y-2">
-
-        {["card", "upi", "cod"].map((m) => (
-          <label key={m} className="flex items-center gap-2">
-
-            <input
-              type="radio"
-              name="payment"
-              value={m}
-              checked={method === m}
-              onChange={() => setMethod(m)}
-            />
-
-            {m.toUpperCase()}
-
-          </label>
-        ))}
-
+      {/* ─── Payment Method ───────────────────────────────────── */}
+      <div className="mb-6">
+        <h3 className="font-semibold mb-2">Payment Method</h3>
+        <div className="space-y-2">
+          {[
+            { value: "card", label: "💳 Credit / Debit Card" },
+            { value: "upi", label: "📱 UPI" },
+            { value: "cod", label: "💵 Cash on Delivery" },
+          ].map((m) => (
+            <label
+              key={m.value}
+              className="flex items-center gap-2 border p-3 rounded cursor-pointer"
+            >
+              <input
+                type="radio"
+                name="payment"
+                value={m.value}
+                checked={method === m.value}
+                onChange={() => setMethod(m.value)}
+              />
+              {m.label}
+            </label>
+          ))}
+        </div>
       </div>
 
       <button
         onClick={handlePayment}
-        className="mt-6 w-full bg-blue-600 text-white py-3 rounded"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-3 rounded font-semibold disabled:opacity-50"
       >
-        Confirm Order
+        {loading ? "Processing..." : "Confirm & Pay"}
       </button>
-
     </div>
   );
 };

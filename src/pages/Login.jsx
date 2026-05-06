@@ -7,58 +7,45 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
   const from = location.state?.from?.pathname || "/";
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Handle input change
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle login submit
   const handleLogin = async (e) => {
-  e.preventDefault();
-  setError("");
+    e.preventDefault();
+    setError("");
 
-  const email = formData.email.trim();
-  const password = formData.password.trim();
+    const email = formData.email.trim();
+    const password = formData.password.trim();
 
-  //  Frontend validation
-  if (!email || !password) {
-    setError("Email and password are required");
-    return;
-  }
+    if (!email || !password) {
+      setError("Email and password are required");
+      return;
+    }
 
-  // Basic email format check
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    setError("Please enter a valid email address");
-    return;
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
+    const result = await login(email, password);
+    setLoading(false);
 
-  const success = await login(email, password);
-
-  setLoading(false);
-
-  if (success) {
-    navigate(from, { replace: true });
-  } else {
-    setError("Invalid email or password");
-  }
-};
+    if (result.success) {
+      navigate(from, { replace: true });
+    } else {
+      
+      setError(result.error || "Invalid email or password");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -100,7 +87,7 @@ const Login = () => {
         </form>
 
         <p className="text-center text-sm mt-4">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <Link to="/signup" className="text-blue-600 underline">
             Sign up
           </Link>

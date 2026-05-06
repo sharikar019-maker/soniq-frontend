@@ -2,44 +2,32 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ShopContext } from "../Context/shopContext";
 import { AuthContext } from "../Context/AuthContext";
-import { getProductById } from "../api/productService";
+import { getProductById, addProductReview } from "../api/productService";
 
-const BASE_IMAGE_URL = "http://localhost:5000";
+const BASE_IMAGE_URL = "";
 
 const ProductDetails = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // ← id is already a string, no Number() needed
   const navigate = useNavigate();
 
-  // ✅ addReview added
-  const { addToCart, addReview } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext);
   const { user } = useContext(AuthContext);
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+  const [reviewLoading, setReviewLoading] = useState(false);
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const loadProduct = async () => {
       try {
         setLoading(true);
         setError("");
-
-        const data = await getProductById(Number(id));
-
+        const data = await getProductById(id); // ← string id directly
         if (!data) throw new Error("Product not found");
-
-        const savedReviews = localStorage.getItem(`reviews_${id}`);
-
-        setProduct({
-          ...data,
-          reviews: savedReviews
-            ? JSON.parse(savedReviews)
-            : data.reviews || []
-        });
-
+        setProduct(data);
       } catch (err) {
         console.error(err);
         setError("Product not found");
@@ -47,23 +35,20 @@ const ProductDetails = () => {
         setLoading(false);
       }
     };
-
-    fetchProduct();
+    loadProduct();
   }, [id]);
 
-  if (loading) {
-    return <p className="text-center mt-20">Loading product...</p>;
-  }
+  if (loading) return <p className="text-center mt-20">Loading product...</p>;
+  if (error) return <p className="text-center mt-20 text-red-500">{error}</p>;
 
-  if (error) {
-    return (
-      <p className="text-center mt-20 text-red-500">
-        {error}
-      </p>
-    );
-  }
-
-  const { image, title, price, description, reviews = [], specs } = product;
+  const {
+    image,
+    title,
+    price,
+    description,
+    reviews = [],
+    technicalSpecs,   // ← fixed from specs
+  } = product;
 
   const imageSrc = image?.startsWith("http")
     ? image
@@ -74,64 +59,45 @@ const ProductDetails = () => {
     navigate("/cart");
   };
 
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = async (e) => {
     e.preventDefault();
 
     if (!user) {
-      alert("Login to add review");
+      alert("Please login to add a review");
       return;
     }
 
-    const newReview = {
-      id: Date.now(),
-      name: user.name || user.email,
-      rating: Number(rating),
-      comment
-    };
+    try {
+      setReviewLoading(true);
 
-    const updatedReviews = [...reviews, newReview];
+      // save review to backend
+      const updatedProduct = await addProductReview(product._id, {
+        rating: Number(rating),
+        comment,
+      });
 
-    const updatedProduct = {
-      ...product,
-      reviews: updatedReviews
-    };
-
-    setProduct(updatedProduct);
-
-    // SAVE REVIEWS (your existing logic)
-    localStorage.setItem(
-      `reviews_${product.id}`,
-      JSON.stringify(updatedReviews)
-    );
-
-    // ✅ UPDATE GLOBAL PRODUCTS (this fixes ProductCard)
-    addReview(product.id, newReview);
-
-    setComment("");
-    setRating(5);
+      // update local state with fresh data from backend
+      setProduct(updatedProduct);
+      setComment("");
+      setRating(5);
+    } catch (err) {
+      console.error("Review submit failed", err);
+      alert(err.response?.data?.message || "Failed to submit review");
+    } finally {
+      setReviewLoading(false);
+    }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <img
-          src={imageSrc}
-          alt={title}
-          className="w-full rounded-lg"
-        />
+        <img src={imageSrc} alt={title} className="w-full rounded-lg" />
 
         <div>
           <h1 className="text-3xl font-bold mb-2">{title}</h1>
-
-          <p className="text-2xl font-semibold mb-4">
-            ₹{price}
-          </p>
-
-          <p className="text-gray-600 mb-6">
-            {description}
-          </p>
-
+          <p className="text-2xl font-semibold mb-4">₹{price}</p>
+          <p className="text-gray-600 mb-6">{description}</p>
           <button
             onClick={handleAddToCart}
             className="bg-blue-600 text-white px-6 py-3 rounded"
@@ -141,14 +107,12 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {specs && (
+      {/* TECHNICAL SPECS */}
+      {technicalSpecs && (
         <div className="mt-16">
-          <h2 className="text-2xl font-semibold mb-6">
-            Technical Specifications
-          </h2>
-
+          <h2 className="text-2xl font-semibold mb-6">Technical Specifications</h2>
           <div className="border rounded-lg divide-y">
-            {Object.entries(specs).map(([key, value]) => (
+            {Object.entries(technicalSpecs).map(([key, value]) => (
               <Spec key={key} label={key} value={value} />
             ))}
           </div>
@@ -157,25 +121,16 @@ const ProductDetails = () => {
 
       {/* REVIEWS */}
       <div className="mt-16">
-        <h2 className="text-2xl font-semibold mb-6">
-          Customer Reviews
-        </h2>
-
+        <h2 className="text-2xl font-semibold mb-6">Customer Reviews</h2>
         {reviews.length === 0 ? (
           <p className="text-gray-500">No reviews yet</p>
         ) : (
           <div className="space-y-4">
             {reviews.map((review) => (
-              <div key={review.id} className="border p-4 rounded-lg">
+              <div key={review._id} className="border p-4 rounded-lg">
                 <p className="font-medium">{review.name}</p>
-
-                <p className="text-yellow-500">
-                  {"★".repeat(review.rating)}
-                </p>
-
-                <p className="text-gray-600 mt-1">
-                  {review.comment}
-                </p>
+                <p className="text-yellow-500">{"★".repeat(review.rating)}</p>
+                <p className="text-gray-600 mt-1">{review.comment}</p>
               </div>
             ))}
           </div>
@@ -184,14 +139,8 @@ const ProductDetails = () => {
 
       {/* ADD REVIEW */}
       <div className="mt-12">
-        <h3 className="text-xl font-semibold mb-4">
-          Write a Review
-        </h3>
-
-        <form
-          onSubmit={handleReviewSubmit}
-          className="space-y-4 max-w-md"
-        >
+        <h3 className="text-xl font-semibold mb-4">Write a Review</h3>
+        <form onSubmit={handleReviewSubmit} className="space-y-4 max-w-md">
           <select
             value={rating}
             onChange={(e) => setRating(e.target.value)}
@@ -214,9 +163,10 @@ const ProductDetails = () => {
 
           <button
             type="submit"
-            className="bg-black text-white px-4 py-2 rounded"
+            disabled={reviewLoading}
+            className="bg-black text-white px-4 py-2 rounded disabled:opacity-50"
           >
-            Submit Review
+            {reviewLoading ? "Submitting..." : "Submit Review"}
           </button>
         </form>
       </div>
@@ -226,7 +176,7 @@ const ProductDetails = () => {
 
 const Spec = ({ label, value }) => (
   <div className="flex justify-between p-4">
-    <span>{label}</span>
+    <span className="capitalize">{label}</span>
     <span>{value}</span>
   </div>
 );

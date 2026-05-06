@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
-const BASE_IMAGE_URL = "http://localhost:5000";
+const BASE_IMAGE_URL = "";
 
 const ProductCard = ({ product }) => {
   if (!product) return null;
 
   const {
-    id,
+    _id,
     image,
     title,
     price,
@@ -46,11 +46,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="bg-white rounded-lg shadow hover:shadow-lg transition">
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${_id}`}>
         <img
           src={imageSrc}
           alt={title}
-          className="w-full h-100 object-cover rounded-t-lg"
+          className="w-full h-120 object-cover rounded-t-lg"
         />
       </Link>
 
@@ -78,7 +78,7 @@ const ProductCard = ({ product }) => {
           <p className="text-xl font-bold">₹{price}</p>
 
           <Link
-            to={`/product/${id}`}
+            to={`/product/${_id}`}
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
             View Details

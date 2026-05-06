@@ -1,5 +1,18 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+} from "react";
 import { getAllProducts } from "../api/productService";
+import {
+  fetchCart,
+  addToCartApi,
+  updateCartItemApi,
+  removeFromCartApi,
+  clearCartApi,
+} from "../api/productService";
 import { AuthContext } from "./AuthContext";
 
 export const ShopContext = createContext();
@@ -10,17 +23,15 @@ const ShopContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [cart, setCart] = useState([]);
+  // cart shape from backend: { items: [{product: {...}, quantity: N}], totalPrice: N }
+  const [cart, setCart] = useState({ items: [], totalPrice: 0 });
   const [checkoutItems, setCheckoutItems] = useState([]);
-
   const [discount, setDiscount] = useState(0);
   const [coupon, setCoupon] = useState(null);
 
-  const cartKey = user ? `cart_${user.email}` : null;
-
-  // Fetch Products
+  // ─── Fetch Products ───────────────────────────────────────────────
   useEffect(() => {
-    const fetchProducts = async () => {
+    const loadProducts = async () => {
       try {
         const data = await getAllProducts();
         setProducts(data);
@@ -30,134 +41,127 @@ const ShopContextProvider = ({ children }) => {
         setLoading(false);
       }
     };
-    fetchProducts();
+    loadProducts();
   }, []);
 
-  // Load Cart
-  useEffect(() => {
+  // ─── Fetch Cart when user logs in ─────────────────────────────────
+  const loadCart = useCallback(async () => {
     if (!user) {
-      setCart([]);
+      setCart({ items: [], totalPrice: 0 });
       return;
     }
-
-    const savedCart = localStorage.getItem(cartKey);
-    setCart(savedCart ? JSON.parse(savedCart) : []);
+    try {
+      const data = await fetchCart();
+      setCart(data || { items: [], totalPrice: 0 });
+    } catch (err) {
+      console.error("Cart fetch failed", err);
+    }
   }, [user]);
 
-  // Persist Cart
   useEffect(() => {
-    if (user && cartKey) {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
-    }
-  }, [cart]);
+    loadCart();
+  }, [loadCart]);
 
-  // Derived Totals
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.amount,
-    0
-  );
-
-  const finalTotal = Math.max(total - discount, 0);
-
-  const quantity = cart.reduce((sum, item) => sum + item.amount, 0);
-
-  // Cart Methods
-  const addToCart = (product, qty = 1) => {
+  // ─── Cart Actions ─────────────────────────────────────────────────
+  const addToCart = async (product, qty = 1) => {
     if (!user) return;
+    try {
+      const updated = await addToCartApi(product._id, qty);
+      setCart(updated);
+    } catch (err) {
+      console.error("Add to cart failed", err);
+    }
+  };
 
-    setCart(prev => {
-      const existing = prev.find(p => p.id === product.id);
-      if (existing) {
-        return prev.map(p =>
-          p.id === product.id
-            ? { ...p, amount: p.amount + qty }
-            : p
-        );
+  const increaseAmt = async (productId) => {
+    const item = cart.items?.find((i) => i.product._id === productId);
+    if (!item) return;
+    try {
+      const updated = await updateCartItemApi(productId, item.quantity + 1);
+      setCart(updated);
+    } catch (err) {
+      console.error("Increase qty failed", err);
+    }
+  };
+
+  const decreaseAmt = async (productId) => {
+    const item = cart.items?.find((i) => i.product._id === productId);
+    if (!item) return;
+    try {
+      if (item.quantity <= 1) {
+        // remove item if qty would go to 0
+        const updated = await removeFromCartApi(productId);
+        setCart(updated);
+      } else {
+        const updated = await updateCartItemApi(productId, item.quantity - 1);
+        setCart(updated);
       }
-      return [...prev, { ...product, amount: qty }];
-    });
+    } catch (err) {
+      console.error("Decrease qty failed", err);
+    }
   };
 
-  const removeItem = id => {
-    setCart(prev => prev.filter(p => p.id !== id));
+  const removeItem = async (productId) => {
+    try {
+      const updated = await removeFromCartApi(productId);
+      setCart(updated);
+    } catch (err) {
+      console.error("Remove item failed", err);
+    }
   };
 
-  const clearCart = () => {
-    if (cartKey) localStorage.removeItem(cartKey);
-    setCart([]);
-    setCheckoutItems([]);
-    setDiscount(0);
-    setCoupon(null);
+  const clearCart = async () => {
+    try {
+      await clearCartApi();
+      setCart({ items: [], totalPrice: 0 });
+      setCheckoutItems([]);
+      setDiscount(0);
+      setCoupon(null);
+    } catch (err) {
+      console.error("Clear cart failed", err);
+    }
   };
 
   const checkoutCart = () => {
-    setCheckoutItems(cart);
+    setCheckoutItems(cart.items); // items have backend shape
   };
 
-  // apply coupon
+  // ─── Derived Totals ───────────────────────────────────────────────
+  const total = cart.totalPrice || 0;
+  const finalTotal = Math.max(total - discount, 0);
+  const quantity =
+    cart.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
+  // ─── Coupon ───────────────────────────────────────────────────────
   const applyCoupon = (code) => {
-    if (!user) {
-      return { success: false, message: "Login required" };
-    }
+    if (!user) return { success: false, message: "Login required" };
 
     const normalizedCode = code.trim().toUpperCase();
-
     if (normalizedCode !== "SAVE200") {
       return { success: false, message: "Invalid coupon" };
     }
 
-    const expiryDate = new Date("2026-03-15T23:59:59");
-    const today = new Date();
-
-    if (today > expiryDate) {
+    const expiryDate = new Date("2026-06-15T23:59:59");
+    if (new Date() > expiryDate) {
       return { success: false, message: "Coupon expired" };
     }
 
     const usageKey = `coupon_${normalizedCode}_${user.email}`;
-    const alreadyUsed = localStorage.getItem(usageKey);
-
-    if (alreadyUsed) {
+    if (localStorage.getItem(usageKey)) {
       return { success: false, message: "You already used this coupon" };
     }
 
     setDiscount(200);
     setCoupon(normalizedCode);
-
     localStorage.setItem(usageKey, "used");
-
     return { success: true };
-  };
-
-  // ===============================
-  // ADD REVIEW (NEW FUNCTION)
-  // ===============================
-  const addReview = (productId, review) => {
-    setProducts(prevProducts =>
-      prevProducts.map(product => {
-        if (product.id === productId) {
-          const updatedReviews = [...(product.reviews || []), review];
-
-          // persist reviews
-          localStorage.setItem(
-            `reviews_${productId}`,
-            JSON.stringify(updatedReviews)
-          );
-
-          return {
-            ...product,
-            reviews: updatedReviews
-          };
-        }
-
-        return product;
-      })
-    );
   };
 
   return (
     <ShopContext.Provider
       value={{
         products,
+        setProducts,
         loading,
         cart,
         checkoutItems,
@@ -165,13 +169,14 @@ const ShopContextProvider = ({ children }) => {
         discount,
         finalTotal,
         coupon,
+        quantity,
         addToCart,
+        increaseAmt,
+        decreaseAmt,
         removeItem,
         clearCart,
         checkoutCart,
         applyCoupon,
-        quantity,
-        addReview
       }}
     >
       {children}

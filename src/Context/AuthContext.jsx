@@ -1,98 +1,95 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
-const API_URL = "http://localhost:5000";
+// Axios instance
+const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+  timeout: 5000,
+});
+
+// Attach token to every request automatically
+api.interceptors.request.use((config) => {
+  const token = Cookies.get("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); 
 
-  //  Load user from localStorage when app starts
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
+  //  On app start: check if valid token exists 
+  useEffect(() => {
+    const loadUserFromToken = async () => {
+      const token = Cookies.get("token");
 
-  const [loading, setLoading] = useState(false);
-
-  // LOGIN 
-  const login = async (email, password) => {
-    try {
-      setLoading(true);
-
-      const normalizedEmail = email.trim().toLowerCase();
-
-      const res = await fetch(`${API_URL}/users?email=${normalizedEmail}`);
-      if (!res.ok) throw new Error("Server error");
-
-      const users = await res.json();
-
-      if (users.length === 0) {
-        return { success: false, error: "USER_NOT_FOUND" };
+      if (!token) {
+        setLoading(false);
+        return;
       }
 
-      const foundUser = users[0];
-
-      if (foundUser.password !== password) {
-        return { success: false, error: "WRONG_PASSWORD" };
+      try {
+        const res = await api.get("/auth/me");
+        setUser(res.data.data);
+      } catch (err) {
+        // token expired or invalid — clear it
+        Cookies.remove("token");
+        setUser(null);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      // Save in state
-      setUser(foundUser);
-
-      //  Save in localStorage
-      localStorage.setItem("user", JSON.stringify(foundUser));
-
-      return { success: true };
-
-    } catch (err) {
-      console.error("Login error:", err);
-      return { success: false, error: "NETWORK_ERROR" };
-    } finally {
-      setLoading(false);
-    }
-  };
+    loadUserFromToken();
+  }, []);
 
   //  SIGNUP 
   const signup = async (userData) => {
     try {
       setLoading(true);
+      const res = await api.post("/auth/register", userData);
 
-      const normalizedEmail = userData.email.trim().toLowerCase();
+      const { token, data } = res.data;
 
-      const checkRes = await fetch(
-        `${API_URL}/users?email=${normalizedEmail}`
-      );
+      // store token in cookie — expires in 7 days
+      Cookies.set("token", token, { expires: 7 });
+      setUser(data);
 
-      const existingUsers = await checkRes.json();
+      return { success: true };
+    } catch (err) {
+      const message = err.response?.data?.message || "Signup failed";
 
-      if (existingUsers.length > 0) {
+      if (message.includes("email already")) {
         return { success: false, error: "EMAIL_EXISTS" };
       }
 
-      const res = await fetch(`${API_URL}/users`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...userData,
-          email: normalizedEmail,
-        }),
-      });
+      return { success: false, error: message };
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      if (!res.ok) throw new Error("Signup failed");
+  //  LOGIN 
+  const login = async (email, password) => {
+    try {
+      setLoading(true);
+      const res = await api.post("/auth/login", { email, password });
 
-      const newUser = await res.json();
+      const { token, data } = res.data;
 
-      //  Save in state
-      setUser(newUser);
-
-      //  Save in localStorage
-      localStorage.setItem("user", JSON.stringify(newUser));
+      // store token in cookie — expires in 7 days
+      Cookies.set("token", token, { expires: 7 });
+      setUser(data);
 
       return { success: true };
-
     } catch (err) {
-      console.error("Signup error:", err);
-      return { success: false, error: "NETWORK_ERROR" };
+      const message = err.response?.data?.message || "Login failed";
+      return { success: false, error: message };
     } finally {
       setLoading(false);
     }
@@ -100,9 +97,12 @@ const AuthProvider = ({ children }) => {
 
   //  LOGOUT 
   const logout = () => {
+    Cookies.remove("token");
     setUser(null);
-    localStorage.removeItem("user"); 
   };
+
+  
+  const isAdmin = user?.role === "admin";
 
   return (
     <AuthContext.Provider
@@ -112,6 +112,8 @@ const AuthProvider = ({ children }) => {
         login,
         signup,
         logout,
+        isAdmin,
+        api, 
       }}
     >
       {children}
