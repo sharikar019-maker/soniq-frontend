@@ -13,36 +13,21 @@ const ProductCard = ({ product }) => {
     price,
     rating,
     noiseReduction,
-    reviews = []
+    reviews = [],
+    numReviews = 0, 
   } = product;
 
   const maxStars = 5;
 
-  // FIX IMAGE URL
   const imageSrc = image?.startsWith("http")
     ? image
     : `${BASE_IMAGE_URL}${image}`;
 
-  // FIND MAJORITY RATING (MODE)
-  let displayRating = rating || 0;
+  
+  const displayRating = Number(rating) || 0;
 
-  if (reviews.length > 0) {
-    const count = {};
-
-    reviews.forEach(r => {
-      const star = Number(r.rating);
-      count[star] = (count[star] || 0) + 1;
-    });
-
-    let maxCount = 0;
-
-    Object.entries(count).forEach(([star, c]) => {
-      if (c > maxCount) {
-        maxCount = c;
-        displayRating = Number(star);
-      }
-    });
-  }
+  
+  const reviewCount = numReviews || reviews.length;
 
   return (
     <div className="bg-white rounded-lg shadow hover:shadow-lg transition">
@@ -60,7 +45,7 @@ const ProductCard = ({ product }) => {
         {/* Rating */}
         <div className="flex items-center gap-1 mt-1">
           {[...Array(maxStars)].map((_, index) =>
-            index < displayRating ? (
+            index < Math.round(displayRating) ? (
               <FaStar key={index} className="text-yellow-400" />
             ) : (
               <FaRegStar key={index} className="text-gray-300" />
@@ -68,7 +53,7 @@ const ProductCard = ({ product }) => {
           )}
 
           <span className="text-sm text-gray-500 ml-2">
-            {displayRating} ⭐ ({reviews.length} reviews) •{" "}
+            {displayRating} ⭐ ({reviewCount} reviews) •{" "}
             {noiseReduction ? "ANC" : "No ANC"}
           </span>
         </div>

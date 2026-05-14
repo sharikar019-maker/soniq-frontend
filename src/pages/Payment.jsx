@@ -11,8 +11,7 @@ import {
 } from "../api/productService";
 
 const Payment = () => {
-  const { checkoutItems, clearCart, finalTotal, discount, total } =
-    useContext(ShopContext);
+  const { cart, clearCart, finalTotal, discount } = useContext(ShopContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -21,7 +20,10 @@ const Payment = () => {
   const [addresses, setAddresses] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // ─── Load saved addresses from localStorage ───────────────────────
+ 
+  const total = cart.totalPrice || 0;
+
+  
   useEffect(() => {
     if (!user) {
       navigate("/login");
@@ -41,44 +43,41 @@ const Payment = () => {
     setSelectedAddress(saved[0]);
   }, [user, navigate]);
 
-  // ─── Format address for backend ───────────────────────────────────
-  // your localStorage address has: { label, address (full string) }
-  // backend needs: { street, city, state, postalCode, country }
+  
   const formatAddress = (addr) => {
-    // if already has backend format fields, use them
+    if (!addr) return null;
+
+    
     if (addr.street) return addr;
 
-    // otherwise split the address string into parts
+    
     const parts = addr.address?.split(",").map((p) => p.trim()) || [];
+
+    
+    if (!parts[0] || !parts[1] || !parts[4]) {
+      toast.error("Address format is invalid. Please re-add your address.");
+      return null;
+    }
+
     return {
-      street: parts[0] || addr.address || "N/A",
-      city: parts[1] || "N/A",
-      state: parts[2] || "N/A",
+      street:     parts[0],
+      city:       parts[1],
+      state:      parts[2] || "N/A",
       postalCode: parts[3] || "000000",
-      country: parts[4] || "India",
+      country:    parts[4],
     };
   };
 
-  if (!checkoutItems || checkoutItems.length === 0) {
-    return (
-      <div className="text-center mt-20">
-        <h2 className="text-2xl font-semibold">No items to checkout</h2>
-        <button
-          onClick={() => navigate("/shop")}
-          className="mt-4 bg-black text-white px-5 py-2 rounded"
-        >
-          Go Shopping
-        </button>
-      </div>
-    );
-  }
-
-  // ─── COD Handler ─────────────────────────────────────────────────
+  
   const handleCOD = async () => {
+    
+    const formattedAddress = formatAddress(selectedAddress);
+    if (!formattedAddress) return;
+
     try {
       setLoading(true);
       await placeOrderApi({
-        shippingAddress: formatAddress(selectedAddress),
+        shippingAddress: formattedAddress,
         paymentMethod: "COD",
       });
 
@@ -92,46 +91,55 @@ const Payment = () => {
     }
   };
 
-  // ─── Razorpay Handler (Card / UPI) ────────────────────────────────
+  
   const handleRazorpay = async () => {
+    
+    const formattedAddress = formatAddress(selectedAddress);
+    if (!formattedAddress) return;
+
+    
+    if (!window.Razorpay) {
+      toast.error("Payment service unavailable. Please refresh and try again.");
+      return;
+    }
+
     try {
       setLoading(true);
 
-      // 1. Get Razorpay key
       const keyId = await getRazorpayKey();
-
-      // 2. Create Razorpay order from backend
       const razorpayOrder = await createRazorpayOrder(finalTotal);
 
-      // 3. Open Razorpay popup
       const options = {
-        key: keyId,
-        amount: razorpayOrder.amount,
+        key:      keyId,
+        amount:   razorpayOrder.amount,
         currency: razorpayOrder.currency,
         order_id: razorpayOrder.razorpayOrderId,
-        name: "HeadPhone Store",
+        name:        "HeadPhone Store",
         description: "Order Payment",
         prefill: {
-          name: user.name,
-          email: user.email,
+          name:    user.name,
+          email:   user.email,
           contact: user.phone || "",
         },
         theme: { color: "#2563eb" },
 
         handler: async (response) => {
           try {
-            // 4. Verify payment + create order in backend
             await verifyPayment({
-              razorpayOrderId: response.razorpay_order_id,
+              razorpayOrderId:   response.razorpay_order_id,
               razorpayPaymentId: response.razorpay_payment_id,
               razorpaySignature: response.razorpay_signature,
-              shippingAddress: formatAddress(selectedAddress),
+              shippingAddress:   formattedAddress,
             });
 
             await clearCart();
             toast.success("Payment successful! Order placed.");
+            
+            setLoading(false);
             navigate("/profile");
           } catch (err) {
+           
+            setLoading(false);
             toast.error("Payment verification failed");
           }
         },
@@ -152,7 +160,7 @@ const Payment = () => {
     }
   };
 
-  // ─── Main Handler ─────────────────────────────────────────────────
+  
   const handlePayment = () => {
     if (!method) {
       toast.warning("Please select a payment method");
@@ -166,21 +174,36 @@ const Payment = () => {
     if (method === "cod") {
       handleCOD();
     } else {
-      // card or upi — both go through Razorpay
       handleRazorpay();
     }
   };
+
+  
+  if (!cart.items || cart.items.length === 0) {
+    return (
+      <div className="text-center mt-20">
+        <h2 className="text-2xl font-semibold">No items to checkout</h2>
+        <button
+          onClick={() => navigate("/shop")}
+          className="mt-4 bg-black text-white px-5 py-2 rounded"
+        >
+          Go Shopping
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-xl mx-auto mt-20 p-6 bg-white shadow rounded">
       <h2 className="text-2xl font-bold mb-6">Checkout</h2>
 
-      {/* ─── Address ──────────────────────────────────────────── */}
+     
       <div className="mb-6">
         <h3 className="font-semibold mb-2">Delivery Address</h3>
-        {addresses.map((addr) => (
+        {addresses.map((addr, index) => (
           <label
-            key={addr.id}
+            // FIX: fallback to index if addr.id is undefined
+            key={addr.id ?? index}
             className="flex items-start gap-2 mb-2 border p-3 rounded cursor-pointer"
           >
             <input
@@ -198,10 +221,10 @@ const Payment = () => {
         ))}
       </div>
 
-      {/* ─── Order Summary ────────────────────────────────────── */}
+      
       <div className="mb-6 bg-gray-50 p-4 rounded">
         <h3 className="font-semibold mb-3">Order Summary</h3>
-        {checkoutItems.map((item) => (
+        {cart.items.map((item) => (
           <div
             key={item.product._id}
             className="flex justify-between mb-2 text-sm"
@@ -209,7 +232,8 @@ const Payment = () => {
             <span>
               {item.product.title} × {item.quantity}
             </span>
-            <span>₹{item.product.price * item.quantity}</span>
+           
+            <span>₹{item.price * item.quantity}</span>
           </div>
         ))}
         <hr className="my-3" />
@@ -220,14 +244,14 @@ const Payment = () => {
         <p className="font-bold text-lg mt-1">Final Total: ₹{finalTotal}</p>
       </div>
 
-      {/* ─── Payment Method ───────────────────────────────────── */}
+     
       <div className="mb-6">
         <h3 className="font-semibold mb-2">Payment Method</h3>
         <div className="space-y-2">
           {[
             { value: "card", label: "💳 Credit / Debit Card" },
-            { value: "upi", label: "📱 UPI" },
-            { value: "cod", label: "💵 Cash on Delivery" },
+            { value: "upi",  label: "📱 UPI" },
+            { value: "cod",  label: "💵 Cash on Delivery" },
           ].map((m) => (
             <label
               key={m.value}

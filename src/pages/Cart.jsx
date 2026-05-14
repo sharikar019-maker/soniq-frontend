@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 const Cart = () => {
   const {
     cart,
-    total,
     quantity,
     discount,
     finalTotal,
@@ -15,13 +14,15 @@ const Cart = () => {
     increaseAmt,
     decreaseAmt,
     removeItem,
-    checkoutCart,
     applyCoupon,
   } = useContext(ShopContext);
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [couponInput, setCouponInput] = useState("");
+
+  
+  const total = cart.totalPrice || 0;
 
   const handleApplyCoupon = () => {
     const result = applyCoupon(couponInput.trim());
@@ -38,11 +39,10 @@ const Cart = () => {
       navigate("/login");
       return;
     }
-    checkoutCart();
     navigate("/payment");
   };
 
-  // ─── Empty cart ───────────────────────────────────────────────────
+  
   if (!cart.items || cart.items.length === 0) {
     return (
       <div className="text-center mt-20">
@@ -58,9 +58,12 @@ const Cart = () => {
     <div className="max-w-5xl mx-auto px-4 mt-20">
       <h2 className="text-3xl font-bold mb-6">Shopping Cart</h2>
 
-      {/* ─── Cart Items ─────────────────────────────────────────── */}
+     
       {cart.items.map((item) => {
         const product = item.product;
+
+        if (!product) return null;
+
         const productId = product._id;
 
         return (
@@ -76,10 +79,9 @@ const Cart = () => {
               />
               <div>
                 <h3 className="font-semibold">{product.title}</h3>
-                <p className="text-gray-500">₹{product.price} × {item.quantity}</p>
-                <p className="font-medium">
-                  ₹{product.price * item.quantity}
-                </p>
+              
+                <p className="text-gray-500">₹{item.price} × {item.quantity}</p>
+                <p className="font-medium">₹{item.price * item.quantity}</p>
               </div>
             </div>
 
@@ -111,7 +113,7 @@ const Cart = () => {
         );
       })}
 
-      {/* ─── Coupon ─────────────────────────────────────────────── */}
+     
       <div className="mt-6 flex gap-2">
         <input
           type="text"
@@ -134,10 +136,12 @@ const Cart = () => {
         </button>
       </div>
 
-      {/* ─── Totals ─────────────────────────────────────────────── */}
+     
       <div className="mt-8 space-y-1">
         <p>Subtotal ({quantity} items): ₹{total}</p>
-        {discount > 0 && <p className="text-green-600">Discount: −₹{discount}</p>}
+        {discount > 0 && (
+          <p className="text-green-600">Discount: −₹{discount}</p>
+        )}
         <p className="font-bold text-lg">Final Total: ₹{finalTotal}</p>
       </div>
 

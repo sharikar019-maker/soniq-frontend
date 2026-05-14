@@ -50,56 +50,59 @@ const AuthProvider = ({ children }) => {
 
   //  SIGNUP 
   const signup = async (userData) => {
-    try {
-      setLoading(true);
-      const res = await api.post("/auth/register", userData);
+  try {
+    setLoading(true);
+    const res = await api.post("/auth/register", userData);
 
-      const { token, data } = res.data;
+    const { accessToken, data } = res.data;  // ✅ matches backend
 
-      // store token in cookie — expires in 7 days
-      Cookies.set("token", token, { expires: 7 });
-      setUser(data);
+    Cookies.set("token", accessToken, { expires: 7 });
+    setUser(data);
 
-      return { success: true };
-    } catch (err) {
-      const message = err.response?.data?.message || "Signup failed";
+    return { success: true };
+  } catch (err) {
+    const message = err.response?.data?.message || "Signup failed";
 
-      if (message.includes("email already")) {
-        return { success: false, error: "EMAIL_EXISTS" };
-      }
-
-      return { success: false, error: message };
-    } finally {
-      setLoading(false);
+    if (message.includes("email already")) {
+      return { success: false, error: "EMAIL_EXISTS" };
     }
-  };
 
+    return { success: false, error: message };
+  } finally {
+    setLoading(false);
+  }
+};
   //  LOGIN 
   const login = async (email, password) => {
-    try {
-      setLoading(true);
-      const res = await api.post("/auth/login", { email, password });
+  try {
+    setLoading(true);
+    const res = await api.post("/auth/login", { email, password });
 
-      const { token, data } = res.data;
+    const { accessToken, data } = res.data;  // ✅ matches backend
 
-      // store token in cookie — expires in 7 days
-      Cookies.set("token", token, { expires: 7 });
-      setUser(data);
+    Cookies.set("token", accessToken, { expires: 7 });
+    setUser(data);
 
-      return { success: true };
-    } catch (err) {
-      const message = err.response?.data?.message || "Login failed";
-      return { success: false, error: message };
-    } finally {
-      setLoading(false);
-    }
-  };
+    return { success: true };
+  } catch (err) {
+    const message = err.response?.data?.message || "Login failed";
+    return { success: false, error: message };
+  } finally {
+    setLoading(false);
+  }
+};
 
   //  LOGOUT 
-  const logout = () => {
+  const logout = async () => {
+  try {
+    await api.post("/auth/logout");  // ✅ clears refresh token in DB
+  } catch (err) {
+    // ignore, clear client side anyway
+  } finally {
     Cookies.remove("token");
     setUser(null);
-  };
+  }
+};
 
   
   const isAdmin = user?.role === "admin";

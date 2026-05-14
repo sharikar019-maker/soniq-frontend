@@ -1,15 +1,17 @@
 import axios from "axios";
-import Cookies from "js-cookie"; // ← use cookies to match AuthContext
+import Cookies from "js-cookie";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
   timeout: 10000,
+  withCredentials: true,
 });
 
-// ─── Attach token from cookies (matches AuthContext) ──────────────
+
 api.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("token"); // ← was localStorage, now cookies
+    const token = Cookies.get("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -18,19 +20,46 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ─── Handle expired token ─────────────────────────────────────────
+
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      Cookies.remove("token");
-      window.location.href = "/login";
+  async (error) => {
+    const originalRequest = error.config;
+
+    
+    if (
+      error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !originalRequest.url.includes("/auth/refresh")
+    ) {
+      originalRequest._retry = true;
+
+      try {
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/auth/refresh`,
+          {},
+          { withCredentials: true }
+        );
+
+        const newToken = res.data.accessToken;
+
+        
+        Cookies.set("token", newToken, { secure: true, sameSite: "Strict" });
+
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return api(originalRequest);
+      } catch (refreshError) {
+        Cookies.remove("token");
+        window.location.href = "/login";
+        return Promise.reject(refreshError);
+      }
     }
+
     return Promise.reject(error);
   }
 );
 
-// ─── Products ─────────────────────────────────────────────────────
+
 export const getAllProducts = async () => {
   const res = await api.get("/products");
   return res.data.data;
@@ -46,25 +75,25 @@ export const addProductReview = async (productId, reviewData) => {
   return res.data.data;
 };
 
-// ─── Cart ─────────────────────────────────────────────────────────
+
 export const fetchCart = async () => {
   const res = await api.get("/cart");
-  return res.data.data;
+  return res.data;
 };
 
-export const addToCartApi = async (productId, quantity = 1) => {
+export const addToCartApi = async (productId, quantity) => {
   const res = await api.post("/cart", { productId, quantity });
-  return res.data.data;
+  return res.data;
 };
 
 export const updateCartItemApi = async (productId, quantity) => {
   const res = await api.put(`/cart/${productId}`, { quantity });
-  return res.data.data;
+  return res.data;
 };
 
 export const removeFromCartApi = async (productId) => {
   const res = await api.delete(`/cart/${productId}`);
-  return res.data.data;
+  return res.data;
 };
 
 export const clearCartApi = async () => {
@@ -72,7 +101,7 @@ export const clearCartApi = async () => {
   return res.data;
 };
 
-// ─── Orders ───────────────────────────────────────────────────────
+
 export const placeOrderApi = async (orderData) => {
   const res = await api.post("/orders", orderData);
   return res.data.data;
@@ -88,7 +117,7 @@ export const getOrderById = async (id) => {
   return res.data.data;
 };
 
-// ─── Payment ──────────────────────────────────────────────────────
+
 export const getRazorpayKey = async () => {
   const res = await api.get("/payment/key");
   return res.data.keyId;
@@ -104,7 +133,7 @@ export const verifyPayment = async (paymentData) => {
   return res.data.data;
 };
 
-// ─── Admin ────────────────────────────────────────────────────────
+
 export const getAllUsers = async () => {
   const res = await api.get("/auth/users");
   return res.data.data;
