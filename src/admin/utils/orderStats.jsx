@@ -1,19 +1,9 @@
-export const getOrderStatusStats = (orders) => {
-  const statusCount = {
-    Placed: 0,
-    Shipped: 0,
-    Delivered: 0,
-    Cancelled: 0
-  };
-
-  orders.forEach(order => {
-    if (statusCount[order.status] !== undefined) {
-      statusCount[order.status]++;
-    }
+const getOrderStatusStats = (orders = []) => {
+  if (!Array.isArray(orders)) return [];
+  const counts = { pending: 0, processing: 0, shipped: 0, delivered: 0, cancelled: 0 };
+  orders.forEach((order) => {
+    if (order.status && counts[order.status] !== undefined) counts[order.status]++;
   });
-
-  return Object.entries(statusCount).map(([name, value]) => ({
-    name,
-    value
-  }));
+  return Object.entries(counts).filter(([, v]) => v > 0).map(([name, value]) => ({ name, value }));
 };
+export default getOrderStatusStats;

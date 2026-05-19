@@ -1,46 +1,50 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import adminApi from "../../fetch/adminapi";
 
 const EditProduct = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { id }     = useParams();
+  const navigate   = useNavigate();
+  const [loading, setLoading]   = useState(true);
+  const [saving, setSaving]     = useState(false);
+  const [error, setError]       = useState("");
 
   const [form, setForm] = useState({
-    title: "",
-    price: "",
-    image: "",
-    description: "",
-    connectionType: "",
+    title:          "",
+    price:          "",
+    image:          "",
+    description:    "",
+    category:       "",
+    noiseReduction: false,
     technicalSpecs: {
-      driver: "",
+      driver:    "",
       frequency: "",
       impedance: "",
-      battery: "",
+      battery:   "",
       bluetooth: "",
     },
   });
 
-  // Fetch product
+  // ─── Fetch existing product ────────────────────────────────────────────────
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/products/${id}`);
-        const data = await res.json();
+        // ✅ adminApi — auth header included
+        const res  = await adminApi.get(`/products/${id}`);
+        const data = res.data?.data; // ✅ your backend wraps in { success, data }
 
         setForm({
-          title: data.title || "",
-          price: data.price || "",
-          image: data.image || "",
-          description: data.description || "",
-          connectionType: data.connectionType || data.category || "",
+          title:          data.title          || "",
+          price:          data.price          || "",
+          image:          data.image          || "",
+          description:    data.description    || "",
+          category:       data.category       || "",   // ✅ "wired" or "wireless"
+          noiseReduction: data.noiseReduction || false,
           technicalSpecs: {
-            driver: data.technicalSpecs?.driver || "",
+            driver:    data.technicalSpecs?.driver    || "",
             frequency: data.technicalSpecs?.frequency || "",
             impedance: data.technicalSpecs?.impedance || "",
-            battery: data.technicalSpecs?.battery || "",
+            battery:   data.technicalSpecs?.battery   || "",
             bluetooth: data.technicalSpecs?.bluetooth || "",
           },
         });
@@ -54,87 +58,91 @@ const EditProduct = () => {
     fetchProduct();
   }, [id]);
 
-  // Handle input change
+  // ─── Handle input changes ──────────────────────────────────────────────────
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
 
     if (name.startsWith("spec_")) {
       const key = name.replace("spec_", "");
-
       setForm((prev) => ({
         ...prev,
-        technicalSpecs: {
-          ...prev.technicalSpecs,
-          [key]: value,
-        },
+        technicalSpecs: { ...prev.technicalSpecs, [key]: value },
       }));
-    } else {
-      setForm((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
+      return;
     }
+
+    if (name === "noiseReduction") {
+      setForm((prev) => ({ ...prev, noiseReduction: checked }));
+      return;
+    }
+
+    // Clear bluetooth when switching to wired
+    if (name === "category" && value === "wired") {
+      setForm((prev) => ({
+        ...prev,
+        category: value,
+        technicalSpecs: { ...prev.technicalSpecs, bluetooth: "" },
+      }));
+      return;
+    }
+
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Validation
-  const validateForm = () => {
-    if (!form.title.trim()) return "Title is required";
-    if (!form.price || Number(form.price) <= 0)
-      return "Price must be greater than 0";
-    if (!form.connectionType) return "Select wired or wireless";
+  // ─── Validation ────────────────────────────────────────────────────────────
+  const validate = () => {
+    if (!form.title.trim())       return "Title is required";
+    if (!form.image.trim())       return "Image URL is required";
+    if (!form.description.trim()) return "Description is required";
+    if (!form.category)           return "Select wired or wireless";
+    if (!form.price || Number(form.price) <= 0) return "Price must be greater than 0";
 
-    const specs = form.technicalSpecs;
+    const s = form.technicalSpecs;
+    if (!s.driver || !s.frequency || !s.impedance || !s.battery)
+      return "Driver, frequency, impedance, and battery are required";
 
-    if (!specs.driver) return "Driver is required";
-    if (!specs.frequency) return "Frequency is required";
-    if (!specs.impedance) return "Impedance is required";
-
-    if (form.connectionType === "wireless") {
-      if (!specs.battery) return "Battery is required";
-      if (!specs.bluetooth) return "Bluetooth version is required";
-    }
+    if (form.category === "wireless" && !s.bluetooth)
+      return "Bluetooth version is required for wireless products";
 
     return "";
   };
 
-  // Submit update
+  // ─── Submit update ─────────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const validationError = validate();
+    if (validationError) { setError(validationError); return; }
 
-    const validationError = validateForm();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
+    setError("");
+    setSaving(true);
 
     const payload = {
-      title: form.title,
-      price: Number(form.price),
-      image: form.image,
-      description: form.description,
-      connectionType: form.connectionType,
+      title:          form.title.trim(),
+      image:          form.image.trim(),
+      description:    form.description.trim(),
+      price:          Number(form.price),
+      category:       form.category,
+      noiseReduction: form.noiseReduction,
       technicalSpecs: {
-        driver: form.technicalSpecs.driver,
-        frequency: form.technicalSpecs.frequency,
-        impedance: form.technicalSpecs.impedance,
-        battery: form.technicalSpecs.battery,
-        bluetooth:
-          form.connectionType === "wired"
-            ? ""
-            : form.technicalSpecs.bluetooth,
+        driver:    form.technicalSpecs.driver.trim(),
+        frequency: form.technicalSpecs.frequency.trim(),
+        impedance: form.technicalSpecs.impedance.trim(),
+        battery:   form.technicalSpecs.battery.trim(),
+        bluetooth: form.category === "wired"
+          ? ""
+          : form.technicalSpecs.bluetooth.trim(),
       },
     };
 
     try {
-      await fetch(`http://localhost:5000/products/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
+      // ✅ adminApi PUT /api/products/:id — auth + correct base URL
+      await adminApi.put(`/products/${id}`, payload);
       navigate("/admin/products");
-    } catch {
-      setError("Failed to update product");
+    } catch (err) {
+      const message = err.response?.data?.message || "Failed to update product";
+      setError(message);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -144,36 +152,32 @@ const EditProduct = () => {
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-semibold mb-6">Edit Product</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow max-w-lg"
-      >
-        {/* Title */}
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow max-w-lg">
+
         <input
           name="title"
           value={form.title}
           onChange={handleChange}
           placeholder="Product Title"
-          className="w-full border px-3 py-2 mb-3"
+          className="w-full border rounded px-3 py-2 mb-3"
         />
 
-        {/* Price */}
         <input
           name="price"
           type="number"
           value={form.price}
           onChange={handleChange}
-          placeholder="Price"
-          className="w-full border px-3 py-2 mb-3"
+          placeholder="Price (₹)"
+          min="0"
+          className="w-full border rounded px-3 py-2 mb-3"
         />
 
-        {/* Image */}
         <input
           name="image"
           value={form.image}
           onChange={handleChange}
           placeholder="Image URL"
-          className="w-full border px-3 py-2 mb-3"
+          className="w-full border rounded px-3 py-2 mb-3"
         />
 
         {form.image && (
@@ -184,98 +188,109 @@ const EditProduct = () => {
           />
         )}
 
-        {/* Description */}
         <textarea
           name="description"
           value={form.description}
           onChange={handleChange}
           rows="3"
           placeholder="Description"
-          className="w-full border px-3 py-2 mb-4"
+          className="w-full border rounded px-3 py-2 mb-4"
         />
 
-        {/* Connectivity */}
+        {/* Category */}
         <div className="mb-4">
-          <label className="block mb-1 font-medium">Connectivity</label>
-
-          <label className="mr-4">
-            <input
-              type="radio"
-              name="connectionType"
-              value="wired"
-              checked={form.connectionType === "wired"}
-              onChange={handleChange}
-            />
-            Wired
-          </label>
-
-          <label>
-            <input
-              type="radio"
-              name="connectionType"
-              value="wireless"
-              checked={form.connectionType === "wireless"}
-              onChange={handleChange}
-            />
-            Wireless
-          </label>
+          <p className="text-sm font-medium text-gray-600 mb-2">Category</p>
+          <div className="flex gap-6">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="category"
+                value="wired"
+                checked={form.category === "wired"}
+                onChange={handleChange}
+              />
+              Wired
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="category"
+                value="wireless"
+                checked={form.category === "wireless"}
+                onChange={handleChange}
+              />
+              Wireless
+            </label>
+          </div>
         </div>
 
-        {/* Technical Specs */}
+        {/* Noise reduction */}
+        <label className="flex items-center gap-2 mb-4 cursor-pointer">
+          <input
+            type="checkbox"
+            name="noiseReduction"
+            checked={form.noiseReduction}
+            onChange={handleChange}
+          />
+          <span className="text-sm">Noise Reduction</span>
+        </label>
+
+        {/* Technical specs */}
+        <p className="text-sm font-medium text-gray-600 mb-2">Technical Specs</p>
 
         <input
           name="spec_driver"
           value={form.technicalSpecs.driver}
           onChange={handleChange}
-          placeholder="Driver (40mm)"
-          className="w-full border px-3 py-2 mb-2"
+          placeholder="Driver (e.g. 40mm)"
+          className="w-full border rounded px-3 py-2 mb-2"
         />
-
         <input
           name="spec_frequency"
           value={form.technicalSpecs.frequency}
           onChange={handleChange}
-          placeholder="Frequency (20Hz-20kHz)"
-          className="w-full border px-3 py-2 mb-2"
+          placeholder="Frequency (e.g. 20Hz–20kHz)"
+          className="w-full border rounded px-3 py-2 mb-2"
         />
-
         <input
           name="spec_impedance"
           value={form.technicalSpecs.impedance}
           onChange={handleChange}
-          placeholder="Impedance (32 Ohm)"
-          className="w-full border px-3 py-2 mb-2"
+          placeholder="Impedance (e.g. 32Ω)"
+          className="w-full border rounded px-3 py-2 mb-2"
         />
-
         <input
           name="spec_battery"
           value={form.technicalSpecs.battery}
           onChange={handleChange}
-          placeholder="Battery (35 Hours)"
-          className="w-full border px-3 py-2 mb-2"
+          placeholder="Battery Life (e.g. 30 hours)"
+          className="w-full border rounded px-3 py-2 mb-2"
         />
 
-        {form.connectionType === "wireless" && (
+        {form.category === "wireless" && (
           <input
             name="spec_bluetooth"
             value={form.technicalSpecs.bluetooth}
             onChange={handleChange}
-            placeholder="Bluetooth (5.2)"
-            className="w-full border px-3 py-2 mb-2"
+            placeholder="Bluetooth Version (e.g. 5.3)"
+            className="w-full border rounded px-3 py-2 mb-2"
           />
         )}
 
-        {error && <p className="text-red-500 mb-3">{error}</p>}
+        {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
         <div className="flex gap-3">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
-            Update Product
+          <button
+            type="submit"
+            disabled={saving}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+          >
+            {saving ? "Saving..." : "Update Product"}
           </button>
-
           <button
             type="button"
             onClick={() => navigate(-1)}
-            className="bg-gray-300 px-4 py-2 rounded"
+            className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
           >
             Cancel
           </button>

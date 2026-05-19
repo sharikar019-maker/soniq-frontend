@@ -1,22 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { getMyOrders } from "../api/productService";
 import { toast } from "react-toastify";
 import api from "../api/productService";
 
 const OrderHistory = () => {
   const { user } = useContext(AuthContext);
 
-  const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [orders, setOrders]           = useState([]);
+  const [loading, setLoading]         = useState(true);
   const [cancellingId, setCancellingId] = useState(null);
 
   useEffect(() => {
     if (!user) return;
+
     const loadOrders = async () => {
       try {
-        const data = await getMyOrders();
-        setOrders(data || []);
+       
+        const res = await api.get("/orders/my");
+        
+        setOrders(res.data?.data || []);
       } catch (err) {
         console.error("Failed to fetch orders", err);
         toast.error("Failed to load orders");
@@ -24,6 +26,7 @@ const OrderHistory = () => {
         setLoading(false);
       }
     };
+
     loadOrders();
   }, [user]);
 
@@ -55,7 +58,7 @@ const OrderHistory = () => {
   const handleCancel = async (orderId) => {
     try {
       setCancellingId(orderId);
-      await api.put(`/orders/${orderId}/cancel`);
+      await api.patch(`/orders/${orderId}/cancel`);
       setOrders((prev) =>
         prev.map((order) =>
           order._id === orderId ? { ...order, status: "cancelled" } : order
@@ -103,9 +106,9 @@ ${order.shippingAddress?.country}
     `.trim();
 
     const blob = new Blob([content], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
+    const url  = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = url;
+    link.href     = url;
     link.download = `invoice_${order._id}.txt`;
     link.click();
     URL.revokeObjectURL(url);
@@ -113,17 +116,17 @@ ${order.shippingAddress?.country}
 
   const getStatusColor = (status) => {
     const colors = {
-      pending: "bg-yellow-100 text-yellow-800",
+      pending:    "bg-yellow-100 text-yellow-800",
       processing: "bg-blue-100 text-blue-800",
-      shipped: "bg-purple-100 text-purple-800",
-      delivered: "bg-green-100 text-green-800",
-      cancelled: "bg-red-100 text-red-800",
+      shipped:    "bg-purple-100 text-purple-800",
+      delivered:  "bg-green-100 text-green-800",
+      cancelled:  "bg-red-100 text-red-800",
     };
     return colors[status] || "bg-gray-100 text-gray-800";
   };
 
-  if (!user) return <p className="p-4">Please login to view orders.</p>;
-  if (loading) return <p className="p-4">Loading orders...</p>;
+  if (!user)    return <p className="p-4">Please login to view orders.</p>;
+  if (loading)  return <p className="p-4">Loading orders...</p>;
 
   return (
     <div className="p-4">
@@ -140,9 +143,7 @@ ${order.shippingAddress?.country}
                 <p className="text-xs text-gray-400 mb-1">Order ID: {order._id}</p>
                 <p className="text-sm text-gray-500">
                   {new Date(order.createdAt).toLocaleDateString("en-IN", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
+                    year: "numeric", month: "long", day: "numeric",
                   })}
                 </p>
               </div>
@@ -179,7 +180,7 @@ ${order.shippingAddress?.country}
 
               {order.status === "pending" && (
                 <button
-                  onClick={() => confirmCancel(order._id)} // ✅ fixed
+                  onClick={() => confirmCancel(order._id)}
                   disabled={cancellingId === order._id}
                   className={`px-3 py-1 rounded text-sm text-white ${
                     cancellingId === order._id

@@ -1,72 +1,87 @@
 import { useEffect, useState } from "react";
-
+import adminApi from "../fetch/adminapi";
 import StatCard from "../components/StatCard";
 import MonthlyProfitChart from "../components/MonthlyProfitChart";
 import OrderStatusChart from "../components/OrderStatusChart";
-
-import { getOrderStatusStats } from "../utils/orderStats";
-import { getMonthlyProfit } from "../utils/monthlyProfit";
+import getOrderStatusStats from "../utils/orderStats";
+import getMonthlyProfit from "../utils/monthlyProfit";
 
 const Dashboard = () => {
-  const [orders, setOrders] = useState([]);
-  const [statusData, setStatusData] = useState([]);
+  const [orders, setOrders]               = useState([]);
+  const [users, setUsers]                 = useState({ total: 0, newThisMonth: 0 });
+  const [statusData, setStatusData]       = useState([]);
   const [monthlyProfit, setMonthlyProfit] = useState([]);
+  const [loading, setLoading]             = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
-      .then((res) => res.json())
-      .then((data) => {
-        setOrders(data);
-        setStatusData(getOrderStatusStats(data));
-        setMonthlyProfit(getMonthlyProfit(data));
-      })
-      .catch((err) => {
-        console.error("Failed to fetch orders", err);
-      });
+    const loadDashboard = async () => {
+      try {
+        // ✅ allSettled — one failure never kills the other
+        const [ordersResult, usersResult] = await Promise.allSettled([
+          adminApi.get("/orders"),
+          adminApi.get("/users/stats"),
+        ]);
+
+        if (ordersResult.status === "fulfilled") {
+          const fetchedOrders = ordersResult.value.data?.data || [];
+          setOrders(fetchedOrders);
+          setStatusData(getOrderStatusStats(fetchedOrders));
+          setMonthlyProfit(getMonthlyProfit(fetchedOrders));
+        } else {
+          console.error("Orders fetch failed:", ordersResult.reason);
+        }
+
+        if (usersResult.status === "fulfilled") {
+          setUsers(usersResult.value.data?.data || { total: 0, newThisMonth: 0 });
+        } else {
+          console.error("User stats fetch failed:", usersResult.reason);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadDashboard();
   }, []);
 
-  // DERIVED STATS   
-  const totalRevenue = orders.reduce(
-    (sum, order) => sum + order.totalAmount,
-    0
-  );
+  const totalRevenue = orders.reduce((sum, o) => sum + (o.totalPrice || 0), 0);
+  const totalOrders  = orders.length;
 
-  const totalOrders = orders.length;
+  if (loading) {
+    return (
+      <div className="p-6 text-center text-gray-500">Loading dashboard...</div>
+    );
+  }
 
-  const uniqueCustomers = new Set(
-    orders.map((order) => order.userEmail)
-  ).size;
-
-  const newUsers = uniqueCustomers; 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-semibold mb-6">Dashboard Overview</h1>
 
-      {/* STAT CARDS */}
+      {/* ── Stat Cards ──────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
           title="Total Revenue"
-          value={`₹${totalRevenue}`}
-          bg="bg-green-500"
+          value={`₹${totalRevenue.toLocaleString("en-IN")}`}
+          color="green"   // ✅ color prop, not bg — full class resolved in StatCard
         />
         <StatCard
           title="Total Orders"
           value={totalOrders}
-          bg="bg-blue-500"
+          color="blue"
         />
         <StatCard
-          title="Total Customers"
-          value={uniqueCustomers}
-          bg="bg-indigo-500"
+          title="Total Users"
+          value={users.total ?? 0}
+          color="indigo"
         />
         <StatCard
-          title="New Users"
-          value={newUsers}
-          bg="bg-pink-500"
+          title="New Users (30d)"
+          value={users.newThisMonth ?? 0}
+          color="pink"
         />
       </div>
 
-      {/* CHARTS */}
+      {/* ── Charts ──────────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <MonthlyProfitChart data={monthlyProfit} />
         <OrderStatusChart data={statusData} />

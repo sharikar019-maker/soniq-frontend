@@ -1,40 +1,16 @@
-export const getMonthlyProfit = (orders) => {
-  const monthlyMap = {};
-
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const getMonthlyProfit = (orders = []) => {
+  if (!Array.isArray(orders) || orders.length === 0) return [];
+  const profitMap = {};
   orders.forEach((order) => {
-    if (!order.createdAt) return;
-
+    if (order.status !== "delivered") return;
     const date = new Date(order.createdAt);
     if (isNaN(date.getTime())) return;
-
-    const year = date.getFullYear();
-    const month = date.getMonth(); // 0 = Jan
-
-    const key = `${year}-${month}`;
-
-    monthlyMap[key] =
-      (monthlyMap[key] || 0) + order.totalAmount;
+    const label = `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+    profitMap[label] = (profitMap[label] || 0) + (order.totalPrice || 0);
   });
-
-  return Object.entries(monthlyMap)
-    .sort((a, b) => {
-      const [yearA, monthA] = a[0].split("-").map(Number);
-      const [yearB, monthB] = b[0].split("-").map(Number);
-
-      if (yearA !== yearB) return yearA - yearB;
-      return monthA - monthB;
-    })
-    .map(([key, profit]) => {
-      const [year, month] = key.split("-").map(Number);
-
-      const label = new Date(year, month).toLocaleString("default", {
-        month: "short",
-        year: "numeric",
-      });
-
-      return {
-        month: label,
-        profit,
-      };
-    });
+  return Object.entries(profitMap)
+    .map(([month, profit]) => ({ month, profit }))
+    .sort((a, b) => new Date("1 " + a.month) - new Date("1 " + b.month));
 };
+export default getMonthlyProfit;

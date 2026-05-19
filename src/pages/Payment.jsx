@@ -202,7 +202,7 @@ const Payment = () => {
         <h3 className="font-semibold mb-2">Delivery Address</h3>
         {addresses.map((addr, index) => (
           <label
-            // FIX: fallback to index if addr.id is undefined
+            
             key={addr.id ?? index}
             className="flex items-start gap-2 mb-2 border p-3 rounded cursor-pointer"
           >

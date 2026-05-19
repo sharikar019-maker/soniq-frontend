@@ -1,40 +1,39 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import adminApi from "../fetch/adminapi";
 
-const BASE_URL = "http://localhost:5000/orders";
 
-const ORDER_STATUSES = [
-  "Placed",
-  "Shipped",
-  "Delivered"
-];
-
+const ORDER_STATUSES = ["pending", "processing", "shipped", "delivered", "cancelled"];
 const STATUS_FILTERS = ["All", ...ORDER_STATUSES];
 
 const Orders = () => {
-  const [orders, setOrders] = useState([]);
-  const [filter, setFilter] = useState("All");
-  const [loading, setLoading] = useState(true);
+  const [orders, setOrders]       = useState([]);
+  const [filter, setFilter]       = useState("All");
+  const [loading, setLoading]     = useState(true);
   const [updatingId, setUpdatingId] = useState(null);
+  const [error, setError]         = useState(null);
 
   useEffect(() => {
     fetchOrders();
-
-    const interval = setInterval(fetchOrders, 5000);
+   
+    const interval = setInterval(fetchOrders, 30000);
     return () => clearInterval(interval);
   }, []);
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get(BASE_URL);
+     
+      const res = await adminApi.get("/orders");
+      
+      const fetched = res.data?.data || [];
 
-      const sortedOrders = res.data.sort(
+      const sorted = [...fetched].sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
-
-      setOrders(sortedOrders);
+      setOrders(sorted);
+      setError(null);
     } catch (err) {
       console.error("Failed to fetch orders", err);
+      setError("Failed to load orders");
     } finally {
       setLoading(false);
     }
@@ -43,21 +42,19 @@ const Orders = () => {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       setUpdatingId(orderId);
+      
+      await adminApi.patch(`/orders/${orderId}/status`, { status: newStatus });
 
-      await axios.patch(`${BASE_URL}/${orderId}`, {
-        status: newStatus,
-      });
-
+      
       setOrders((prev) =>
         prev.map((order) =>
-          order.id === orderId
-            ? { ...order, status: newStatus }
-            : order
+          order._id === orderId ? { ...order, status: newStatus } : order
         )
       );
     } catch (err) {
       console.error("Failed to update status", err);
-      alert("Failed to update order status");
+      const message = err.response?.data?.message || "Failed to update order status";
+      alert(message);
     } finally {
       setUpdatingId(null);
     }
@@ -70,30 +67,25 @@ const Orders = () => {
 
   const formatDate = (dateString) => {
     if (!dateString) return "—";
-
     const date = new Date(dateString);
-
     if (isNaN(date.getTime())) return "Invalid";
-
     return date.toLocaleDateString("en-IN");
   };
 
-  if (loading) {
-    return <p className="p-6">Loading orders...</p>;
-  }
+  if (loading) return <p className="p-6">Loading orders...</p>;
+  if (error)   return <p className="p-6 text-red-500">{error}</p>;
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-semibold mb-6">Orders</h1>
 
-      {/* Filters */}
+      {/* Status filters */}
       <div className="flex gap-3 mb-6 flex-wrap">
         {STATUS_FILTERS.map((status) => (
           <button
             key={status}
             onClick={() => setFilter(status)}
-            className={`px-4 py-2 rounded-full text-sm font-medium
-            ${
+            className={`px-4 py-2 rounded-full text-sm font-medium capitalize ${
               filter === status
                 ? "bg-black text-white"
                 : "bg-gray-100 hover:bg-gray-200"
@@ -104,84 +96,72 @@ const Orders = () => {
         ))}
       </div>
 
-      {/* Orders Table */}
+      {/* Orders table */}
       <div className="overflow-x-auto bg-white rounded-lg shadow">
         <table className="w-full text-left border-collapse">
           <thead className="bg-gray-100 text-sm text-gray-600">
             <tr>
               <th className="p-4">Order ID</th>
-              <th className="p-4">Customer Email</th>
+              <th className="p-4">Customer</th>
               <th className="p-4">Items</th>
-              <th className="p-4">Amount</th>
-              <th className="p-4">Discount Amount</th>
-              <th className="p-4">Coupon</th>
+              <th className="p-4">Total</th>
+              <th className="p-4">Payment</th>
               <th className="p-4">Status</th>
-              <th className="p-4">Ordered Date</th>
+              <th className="p-4">Date</th>
             </tr>
           </thead>
 
           <tbody>
-            {filteredOrders.map((order) => (
-              <tr
-                key={order.id}
-                className="border-t text-sm hover:bg-gray-50"
-              >
-                <td className="p-4 font-medium">{order.id}</td>
-
-                <td className="p-4">{order.userEmail}</td>
-
-                <td className="p-4">
-                  {order.items?.map((item) => (
-                    <div key={item.id} className="text-xs text-gray-700">
-                      {item.title} × {item.amount}
-                    </div>
-                  ))}
-                </td>
-
-                <td className="p-4 font-semibold">
-                  ₹{order.totalAmount}
-                </td>
-
-                <td className="p-4 text-green-600">
-                  -₹{order.discountApplied || 0}
-                </td>
-
-                <td className="p-4">
-                  {order.couponCode ? order.couponCode : "—"}
-                </td>
-
-                <td className="p-4">
-                  <select
-                    value={order.status}
-                    disabled={updatingId === order.id}
-                    onChange={(e) =>
-                      updateOrderStatus(order.id, e.target.value)
-                    }
-                    className="border rounded px-2 py-1 text-sm"
-                  >
-                    {ORDER_STATUSES.map((status) => (
-                      <option key={status} value={status}>
-                        {status}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-
-                <td className="p-4 text-gray-600">
-                  {formatDate(order.createdAt)}
-                </td>
-              </tr>
-            ))}
-
-            {filteredOrders.length === 0 && (
+            {filteredOrders.length === 0 ? (
               <tr>
-                <td
-                  colSpan="8"
-                  className="p-6 text-center text-gray-500"
-                >
+                <td colSpan="7" className="p-6 text-center text-gray-500">
                   No orders found
                 </td>
               </tr>
+            ) : (
+              filteredOrders.map((order) => (
+                <tr key={order._id} className="border-t text-sm hover:bg-gray-50">
+                  {/*  _id not id */}
+                  <td className="p-4 font-mono text-xs">{order._id}</td>
+
+                  {/* ✅ user is populated object from $lookup — show name + email */}
+                  <td className="p-4">
+                    <p className="font-medium">{order.user?.name || "—"}</p>
+                    <p className="text-xs text-gray-500">{order.user?.email || "—"}</p>
+                  </td>
+
+                  {/*  item.title exists in your orderItemSchema */}
+                  <td className="p-4">
+                    {order.items?.map((item) => (
+                      <div key={item._id} className="text-xs text-gray-700">
+                        {item.title} × {item.quantity} {/* ✅ quantity not amount */}
+                      </div>
+                    ))}
+                  </td>
+
+                  {/*  totalPrice not totalAmount */}
+                  <td className="p-4 font-semibold">₹{order.totalPrice}</td>
+
+                  <td className="p-4">{order.paymentMethod}</td>
+
+                  <td className="p-4">
+                    <select
+                      value={order.status}
+                      disabled={updatingId === order._id}
+                      onChange={(e) => updateOrderStatus(order._id, e.target.value)}
+                      className="border rounded px-2 py-1 text-sm capitalize disabled:opacity-50"
+                    >
+                      {ORDER_STATUSES.map((status) => (
+                        <option key={status} value={status}>
+                          {status}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
+
+                  <td className="p-4 text-gray-600">{formatDate(order.createdAt)}</td>
+                </tr>
+              ))
             )}
           </tbody>
         </table>

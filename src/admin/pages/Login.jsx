@@ -3,19 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [error, setError]       = useState("");
+  const [loading, setLoading]   = useState(false);
 
   const navigate = useNavigate();
   const { login, admin } = useAdminAuth();
 
-  // If admin already logged in  redirect
+  
   useEffect(() => {
-    if (admin) {
-      navigate("/admin/dashboard", { replace: true });
-    }
+    if (admin) navigate("/admin/dashboard", { replace: true });
   }, [admin, navigate]);
 
   const handleSubmit = async (e) => {
@@ -24,21 +22,16 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(
-        `http://localhost:5000/admins?email=${email}&password=${password}&status=active`
-      );
-      const data = await res.json();
+      
+      const result = await login(email, password);
 
-      if (data.length === 0) {
-        setError("Invalid admin credentials");
-        setLoading(false);
+      if (!result.success) {
+        setError(result.error || "Invalid credentials");
         return;
       }
 
-      login(data[0]);
       navigate("/admin/dashboard", { replace: true });
-
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Try again.");
     } finally {
       setLoading(false);
